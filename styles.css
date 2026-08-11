@@ -525,38 +525,50 @@ body.light .fgroup input,body.light .fgroup select,body.light .fgroup textarea{b
 }
 @media(max-width:900px){
   .estimator-wrap{grid-template-columns:1fr}
-  .est-form{border-right:none;border-bottom:1px solid var(--border)}
+  .est-form{border-right:none;border-bottom:1px solid var(--border);padding:24px 20px}
+  .est-summary{padding:24px 20px}
   .contact-grid{grid-template-columns:1fr}
   .review-grid{grid-template-columns:1fr}
+  .form-card{padding:24px 20px}
 }
 @media(max-width:768px){
+  .nav-container{height:64px;padding:0 16px}
+  .brand-logo-img{height:38px;padding:3px 6px}
   .nav-links{display:none}
   .nav-actions .cta-btn{display:none}
   .hamburger{display:flex}
   .pkg-grid{grid-template-columns:1fr}
   .svc-grid{grid-template-columns:1fr}
-  .why-grid{grid-template-columns:1fr 1fr}
-  .hero-title{font-size:38px}
-  .hero-stats{gap:0}
-  .hstat{padding:0 20px}
+  .why-grid{grid-template-columns:1fr}
+  .hero-inner{padding:100px 18px 60px}
+  .hero-title{font-size: clamp(30px, 8vw, 42px);margin-bottom:16px}
+  .hero-sub{font-size:15px;margin-bottom:28px}
+  .hero-stats{gap:12px 0}
+  .hstat{padding:0 14px}
   .hstat:first-child{padding-left:0}
-  .hstat-num{font-size:26px}
-  .section{padding:70px 0}
-  .container{padding:0 18px}
+  .hstat-num{font-size:24px}
+  .section{padding:56px 0}
+  .container{padding:0 16px}
   .form-row-2{grid-template-columns:1fr}
   .addon-grid{grid-template-columns:1fr}
   .wa-fab-label{display:none}
-  .wa-fab{padding:14px}
+  .wa-fab{padding:14px;bottom:20px;right:16px}
   .wa-fab i{font-size:24px}
-  .footer-inner{flex-direction:column;align-items:flex-start}
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:16px}
+  .modal-box{padding:20px 16px;max-height:94vh}
+  .filter-row{gap:6px}
+  .ftab{padding:8px 14px;font-size:12px}
+  .pkg-detail-btn{opacity:1;transform:none}
 }
 @media(max-width:480px){
-  .hero-title{font-size:30px}
-  .hero-stats{flex-direction:column;align-items:flex-start;gap:16px}
+  .hero-title{font-size:28px}
+  .hero-stats{flex-direction:column;align-items:flex-start;gap:12px}
   .hstat-divider{display:none}
   .hstat{padding:0}
-  .hero-btns{flex-direction:column}
-  .hero-btns .cta-btn,.hero-btns .outline-btn{justify-content:center}
+  .hero-btns{flex-direction:column;width:100%}
+  .hero-btns .cta-btn,.hero-btns .outline-btn{width:100%;justify-content:center}
   .why-grid{grid-template-columns:1fr}
-  .total-num{font-size:32px}
+  .total-num{font-size:30px}
+  .modal-actions{flex-direction:column;gap:10px;align-items:stretch}
+  .modal-actions button{width:100%;justify-content:center}
 }

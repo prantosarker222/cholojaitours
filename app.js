@@ -6,7 +6,7 @@
   'use strict';
 
   // ── Config ────────────────────────────────────────────────
-  const WA_NUM      = '8801700000000';
+  const WA_NUM      = '8801788823404';
   const LEADS_KEY   = 'cholojai_leads_v3';
   const THEME_KEY   = 'cholojai_theme';
   const API_URL     = ['localhost','127.0.0.1'].includes(location.hostname) || location.protocol==='file:'
