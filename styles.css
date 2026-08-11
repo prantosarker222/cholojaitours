@@ -525,16 +525,43 @@ body.light .fgroup input,body.light .fgroup select,body.light .fgroup textarea{b
 .delay-3{transition-delay:.3s}
 .delay-4{transition-delay:.4s}
 
+/* ── BD Tourist Spots Grid ───────────────────────── */
+.bd-spots-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.bd-spot-card{
+  padding:24px;border-radius:var(--r2);
+  background:var(--bg3);border:1px solid var(--border);
+  display:flex;gap:16px;align-items:flex-start;
+  transition:var(--ease);
+}
+.bd-spot-card:hover{border-color:var(--border-gold);transform:translateY(-4px);box-shadow:var(--shg)}
+.bd-spot-icon{
+  width:48px;height:48px;border-radius:var(--r);flex-shrink:0;
+  background:var(--gold-soft);color:var(--gold);
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+  border:1px solid var(--border-gold);
+}
+.bd-spot-content h3{font-size:17px;font-weight:700;margin-bottom:2px;color:var(--txt)}
+.bd-spot-region{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:8px}
+.bd-spot-content p{font-size:13px;color:var(--txt2);line-height:1.6;margin-bottom:14px}
+.bd-spot-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12px;font-weight:700;color:var(--gold);
+  padding:6px 12px;border-radius:var(--r);background:var(--gold-soft);
+  border:1px solid var(--border-gold);transition:var(--ease);
+}
+.bd-spot-link:hover{background:var(--gold);color:#000}
+
 /* ── Responsive ─────────────────────────────────── */
 @media(max-width:1100px){
   .pkg-grid{grid-template-columns:repeat(2,1fr)}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
   .why-grid{grid-template-columns:repeat(2,1fr)}
+  .bd-spots-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:900px){
-  .estimator-wrap{grid-template-columns:1fr}
-  .est-form{border-right:none;border-bottom:1px solid var(--border);padding:24px 20px}
-  .est-summary{padding:24px 20px}
+  .estimator-wrap{grid-template-columns:1fr;border-radius:var(--r2)}
+  .est-form{border-right:none;border-bottom:1px solid var(--border);padding:24px 18px}
+  .est-summary{padding:24px 18px}
   .contact-grid{grid-template-columns:1fr}
   .review-grid{grid-template-columns:1fr}
   .form-card{padding:24px 20px}
@@ -548,6 +575,7 @@ body.light .fgroup input,body.light .fgroup select,body.light .fgroup textarea{b
   .pkg-grid{grid-template-columns:1fr}
   .svc-grid{grid-template-columns:1fr}
   .why-grid{grid-template-columns:1fr}
+  .bd-spots-grid{grid-template-columns:1fr}
   .hero-inner{padding:100px 18px 60px}
   .hero-title{font-size: clamp(30px, 8vw, 42px);margin-bottom:16px}
   .hero-sub{font-size:15px;margin-bottom:28px}
@@ -558,7 +586,12 @@ body.light .fgroup input,body.light .fgroup select,body.light .fgroup textarea{b
   .section{padding:56px 0}
   .container{padding:0 16px}
   .form-row-2{grid-template-columns:1fr}
-  .addon-grid{grid-template-columns:1fr}
+  .addon-grid{grid-template-columns:1fr;gap:8px}
+  .addon{padding:10px 12px;font-size:12px;word-break:break-word}
+  .fgroup select{font-size:13px;padding:12px 36px 12px 12px;white-space:normal;text-overflow:ellipsis}
+  .sum-row{font-size:13px;padding:10px 0}
+  .total-block{padding:16px 12px}
+  .total-num{font-size:24px}
   .wa-fab-label{display:none}
   .wa-fab{padding:14px;bottom:20px;right:16px}
   .wa-fab i{font-size:24px}
@@ -576,7 +609,8 @@ body.light .fgroup input,body.light .fgroup select,body.light .fgroup textarea{b
   .hero-btns{flex-direction:column;width:100%}
   .hero-btns .cta-btn,.hero-btns .outline-btn{width:100%;justify-content:center}
   .why-grid{grid-template-columns:1fr}
-  .total-num{font-size:30px}
+  .total-num{font-size:22px}
   .modal-actions{flex-direction:column;gap:10px;align-items:stretch}
   .modal-actions button{width:100%;justify-content:center}
+  .bd-spot-card{flex-direction:column;padding:18px}
 }
