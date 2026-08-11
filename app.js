@@ -106,6 +106,36 @@
     const open = hamburger.classList.toggle('open');
     drawer?.classList.toggle('open', open);
   });
+
+  // ── Corporate Form ─────────────────────────────────────────
+  $('#corpForm')?.addEventListener('submit', e => {
+    e.preventDefault();
+    const company = $('#corpCompany')?.value.trim();
+    const name    = $('#corpName')?.value.trim();
+    const phone   = $('#corpPhone')?.value.trim();
+    const dest    = $('#corpDest')?.value;
+    const pax     = $('#corpPax')?.value;
+
+    if (!company || !name || !phone) {
+      toast('⚠️ Please fill out company name, contact person, and phone.');
+      return;
+    }
+
+    const leadObj = {
+      date: new Date().toLocaleString(),
+      name: `${company} (${name})`,
+      phone,
+      scope: `Corporate Proposal: ${dest} (${pax})`,
+      status: 'Corporate Inquiry'
+    };
+    // Save to local storage
+    leads.push(leadObj);
+    localStorage.setItem(LEADS_KEY, JSON.stringify(leads));
+    updateBadge();
+
+    const msg = `Hi Cholojai Tours! My company *${company}* (Contact: ${name}, Phone: ${phone}) would like to request a corporate proposal and quotation for *${dest}* (Group size: ${pax}). Please share detailed proposal & terms.`;
+    wa(msg);
+  });
   $$('.drawer-link').forEach(a => a.addEventListener('click', () => {
     hamburger?.classList.remove('open');
     drawer?.classList.remove('open');
