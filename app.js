@@ -133,25 +133,36 @@
     const phone   = $('#corpPhone')?.value.trim();
     const dest    = $('#corpDest')?.value;
     const pax     = $('#corpPax')?.value;
+    const notes   = $('#corpNotes')?.value.trim() || 'Standard corporate package request.';
 
     if (!company || !name || !phone) {
-      toast('⚠️ Please fill out company name, contact person, and phone.');
+      toast('⚠️ Please fill out Company Name, Contact Person, and Phone.');
       return;
     }
 
     const leadObj = {
-      date: new Date().toLocaleString(),
+      id: Date.now(),
+      date: new Date().toLocaleDateString('en-GB', {day:'2-digit', month:'short', year:'numeric'}),
       name: `${company} (${name})`,
       phone,
       scope: `Corporate Proposal: ${dest} (${pax})`,
+      notes: `Requirements: ${notes}`,
       status: 'Corporate Inquiry'
     };
-    // Save to local storage
-    leads.push(leadObj);
+    // Save to local storage & backend
+    leads.unshift(leadObj);
     localStorage.setItem(LEADS_KEY, JSON.stringify(leads));
     updateBadge();
 
-    const msg = `Hi Cholojai Tours! My company *${company}* (Contact: ${name}, Phone: ${phone}) would like to request a corporate proposal and quotation for *${dest}* (Group size: ${pax}). Please share detailed proposal & terms.`;
+    fetch(API_URL, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({name: `${company} - ${name}`, phone, destination: `Corporate: ${dest} (${pax})`, budget: 'Corporate Quote', source: 'Cholojai Web v3'})
+    }).catch(() => {});
+
+    toast('✅ Proposal request saved! Opening WhatsApp…');
+
+    const msg = `Hi Cholojai Tours!\n\n🏢 *Corporate Proposal Request*\n• *Company:* ${company}\n• *Contact Person:* ${name}\n• *Phone/WhatsApp:* ${phone}\n• *Destination:* ${dest}\n• *Group Size:* ${pax}\n• *Requirements:* ${notes}\n\nPlease send us a detailed corporate tour proposal & group pricing!`;
     wa(msg);
   });
   $$('.drawer-link').forEach(a => a.addEventListener('click', () => {

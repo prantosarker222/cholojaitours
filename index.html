@@ -586,24 +586,24 @@
 
           <form id="corpForm" autocomplete="off" novalidate>
             <div class="fgroup">
-              <label>Company / Organization Name *</label>
+              <label><i class="fa-solid fa-building" style="color:var(--gold);"></i> Company / Organization Name *</label>
               <input type="text" id="corpCompany" placeholder="e.g. Grameenphone / Tech Solutions Ltd" required>
             </div>
             <div class="form-row-2">
               <div class="fgroup">
-                <label>Contact Person *</label>
+                <label><i class="fa-solid fa-user" style="color:var(--gold);"></i> Contact Person *</label>
                 <input type="text" id="corpName" placeholder="Your Name / HR / Admin" required>
               </div>
               <div class="fgroup">
-                <label>Corporate Phone / WhatsApp *</label>
+                <label><i class="fa-brands fa-whatsapp" style="color:var(--gold);"></i> Corporate Phone / WhatsApp *</label>
                 <input type="tel" id="corpPhone" placeholder="+880 17XX-XXXXXX" required>
               </div>
             </div>
             <div class="form-row-2">
               <div class="fgroup">
-                <label>Destination Preference</label>
+                <label><i class="fa-solid fa-location-dot" style="color:var(--gold);"></i> Destination Preference</label>
                 <select id="corpDest">
-                  <option value="Cox's Bazar / St. Martin Resort" selected>Cox's Bazar / St. Martin Beach Resort</option>
+                  <option value="Cox's Bazar / St. Martin Beach Resort" selected>Cox's Bazar / St. Martin Beach Resort</option>
                   <option value="Sajek / Bandarban Hill Retreat">Sajek / Bandarban Hill Retreat</option>
                   <option value="Tanguar Haor Luxury Houseboat">Tanguar Haor Luxury Houseboat</option>
                   <option value="Sundarban Mangrove Cruise">Sundarban Mangrove Cruise</option>
@@ -613,7 +613,7 @@
                 </select>
               </div>
               <div class="fgroup">
-                <label>Group Size (Employees)</label>
+                <label><i class="fa-solid fa-users" style="color:var(--gold);"></i> Group Size (Employees)</label>
                 <select id="corpPax">
                   <option value="10-25 Pax">10 – 25 Persons</option>
                   <option value="25-50 Pax" selected>25 – 50 Persons</option>
@@ -621,6 +621,10 @@
                   <option value="100+ Pax">100+ Persons (Large Group)</option>
                 </select>
               </div>
+            </div>
+            <div class="fgroup">
+              <label><i class="fa-solid fa-clipboard-list" style="color:var(--gold);"></i> Special Requirements / Tentative Dates</label>
+              <textarea id="corpNotes" rows="3" placeholder="Specify tentative dates, hotel tier, conference facilities or custom budget..."></textarea>
             </div>
             <button type="submit" class="cta-btn full lg">
               <i class="fa-brands fa-whatsapp"></i> Get Corporate Proposal on WhatsApp
