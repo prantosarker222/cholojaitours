@@ -1,459 +1,534 @@
-// Cholojai Tours & Travels Interactive Logic
-document.addEventListener('DOMContentLoaded', () => {
+/* =============================================================
+   Cholojai Tours & Travels — app.js v2.0
+   Professional interactive logic
+   ============================================================= */
 
-    // Auto Backend API URL detection (Supports Vercel serverless + local Python server)
-    const API_URL = (window.location.protocol === 'file:' || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
-        ? 'http://localhost:8080/api/leads'
-        : '/api/leads';
+(() => {
+    'use strict';
 
-    // State management
-    let inquiries = JSON.parse(localStorage.getItem('cholojai_inquiries') || '[]');
-    updateInquiryBadge();
+    // ── Config ──────────────────────────────────────────────────
+    const WHATSAPP_NUMBER = '8801700000000';
+    const STORAGE_KEY     = 'cholojai_leads_v2';
+    const THEME_KEY       = 'cholojai_theme';
+    const API_URL         = (location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.protocol === 'file:')
+                            ? 'http://localhost:8080/api/leads'
+                            : '/api/leads';
 
-    // DOM Elements
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const calcProjectType = document.getElementById('calcProjectType');
-    const calcTimeline = document.getElementById('calcTimeline');
-    const addonChecks = document.querySelectorAll('.addon-check');
-    
-    const summaryBaseName = document.getElementById('summaryBaseName');
-    const summaryAddonsPrice = document.getElementById('summaryAddonsPrice');
-    const summaryTimelineName = document.getElementById('summaryTimelineName');
-    const calcTotalPrice = document.getElementById('calcTotalPrice');
-    const lockEstimateBtn = document.getElementById('lockEstimateBtn');
+    // ── State ────────────────────────────────────────────────────
+    let leads = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 
-    const contactForm = document.getElementById('contactForm');
-    const adminModal = document.getElementById('adminModal');
-    const openAdminBtn = document.getElementById('openAdminBtn');
-    const footerAdminBtn = document.getElementById('footerAdminBtn');
-    const closeAdminBtn = document.getElementById('closeAdminBtn');
-    const inquiriesTableBody = document.getElementById('inquiriesTableBody');
-    const noInquiriesMsg = document.getElementById('noInquiriesMsg');
-    const clearInquiriesBtn = document.getElementById('clearInquiriesBtn');
-    const exportInquiriesBtn = document.getElementById('exportInquiriesBtn');
-
-    const caseStudyModal = document.getElementById('caseStudyModal');
-    const closeCaseModalBtn = document.getElementById('closeCaseModalBtn');
-    const caseModalTitle = document.getElementById('caseModalTitle');
-    const caseModalBody = document.getElementById('caseModalBody');
-
-    // --- 1. Theme Toggle Logic ---
-    const savedTheme = localStorage.getItem('cholojai_theme');
-    if (savedTheme === 'light') {
-        document.body.classList.add('light-theme');
-        if (themeToggleBtn) themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-    }
-
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('light-theme');
-            const isLight = document.body.classList.contains('light-theme');
-            themeToggleBtn.innerHTML = isLight ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
-            localStorage.setItem('cholojai_theme', isLight ? 'light' : 'dark');
-            showToast(isLight ? '☀️ Light Mode Enabled' : '🌙 Dark Mode Enabled');
-        });
-    }
-
-    // --- 2. Interactive Tour Budget Estimator ---
-    function calculateEstimate() {
-        if (!calcProjectType || !calcTimeline) return;
-
-        const basePrice = parseInt(calcProjectType.value) || 0;
-        const selectedOption = calcProjectType.options[calcProjectType.selectedIndex];
-        const baseName = selectedOption ? selectedOption.getAttribute('data-name') : 'Tour Package';
-        
-        let addonsTotal = 0;
-        addonChecks.forEach(chk => {
-            const card = chk.closest('.check-card');
-            if (chk.checked) {
-                addonsTotal += parseInt(chk.value) || 0;
-                if (card) card.classList.add('active');
-            } else {
-                if (card) card.classList.remove('active');
-            }
-        });
-
-        const timelineMultiplier = parseFloat(calcTimeline.value) || 1.0;
-        const timelineOption = calcTimeline.options[calcTimeline.selectedIndex];
-        const timelineName = timelineOption ? timelineOption.text.split('[')[0].trim() : 'Solo Traveler';
-
-        const subtotal = basePrice + addonsTotal;
-        const finalTotal = Math.round(subtotal * timelineMultiplier);
-
-        if (summaryBaseName) summaryBaseName.innerText = baseName;
-        if (summaryAddonsPrice) summaryAddonsPrice.innerText = `৳${addonsTotal.toLocaleString()}`;
-        if (summaryTimelineName) summaryTimelineName.innerText = timelineName;
-        if (calcTotalPrice) calcTotalPrice.innerText = `৳${finalTotal.toLocaleString()}`;
-    }
-
-    if (calcProjectType) calcProjectType.addEventListener('change', calculateEstimate);
-    if (calcTimeline) calcTimeline.addEventListener('change', calculateEstimate);
-    addonChecks.forEach(chk => chk.addEventListener('change', calculateEstimate));
-
-    if (lockEstimateBtn) {
-        lockEstimateBtn.addEventListener('click', () => {
-            const selectedOption = calcProjectType.options[calcProjectType.selectedIndex];
-            const baseName = selectedOption ? selectedOption.getAttribute('data-name') : 'Tour Package';
-            const estimate = calcTotalPrice ? calcTotalPrice.innerText : '৳14,500';
-
-            const scopeInput = document.getElementById('contactScope');
-            const detailsInput = document.getElementById('contactDetails');
-            
-            if (scopeInput) scopeInput.value = `${baseName} (${estimate})`;
-            if (detailsInput) detailsInput.value = `Hi Cholojai Tours! I calculated a tour budget of ${estimate} for ${baseName}. Please confirm package availability and itinerary details.`;
-
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-            showToast('✅ Tour selection applied to booking form below!');
-        });
-    }
-
-    // --- 3. Package Filter Tabs ---
-    const filterTabs = document.querySelectorAll('.filter-tab');
-    const projectCards = document.querySelectorAll('.project-card');
-
-    filterTabs.forEach(tab => {
-        tab.addEventListener('click', (e) => {
-            const btn = e.currentTarget;
-            filterTabs.forEach(t => t.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filter = btn.getAttribute('data-filter');
-
-            projectCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                if (filter === 'all' || category === filter) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-
-    // --- 4. Package Details Modals ---
-    const tourPackages = [
+    // ── Tour Package Data ─────────────────────────────────────────
+    const packages = [
         {
-            title: "Cox's Bazar & St. Martin Island Cruise",
+            title: "Cox's Bazar & St. Martin Island",
             category: "Domestic Bangladesh Tour",
             duration: "3 Days / 2 Nights",
-            price: "৳8,500 per person",
+            price: "৳8,500",
+            label: "per person",
             highlights: [
-                "4-Star Beachfront Hotel Stay in Cox's Bazar",
-                "St. Martin Island Luxury Bay Cruise Ticket",
+                "4-Star Beachfront Hotel on the world's longest natural sea beach",
+                "St. Martin Island Luxury Bay Cruise Ticket (return)",
                 "Complimentary Buffet Breakfast & Seafood Dinner",
-                "Inani Beach, Himchari & Laboni Beach Sightseeing",
-                "AC Bus Transportation from Dhaka to Cox's Bazar"
+                "Inani Beach, Himchari Waterfall & Laboni Beach guided tour",
+                "Comfortable AC bus transportation from Dhaka",
             ],
-            itinerary: "Day 1: Arrival & Inani Beach Tour. Day 2: St. Martin Island Cruise & Scuba Diving. Day 3: Shopping & Departure."
+            itinerary: [
+                { day: "Day 1", detail: "Arrival at Cox's Bazar, hotel check-in, Laboni Beach sunset walk." },
+                { day: "Day 2", detail: "St. Martin Island cruise, snorkeling, BBQ seafood lunch on the beach." },
+                { day: "Day 3", detail: "Inani Beach & Himchari Hill visit, shopping, departure." },
+            ],
         },
         {
-            title: "Sajek Valley & Bandarban Cloud Adventure",
+            title: "Sajek Valley & Bandarban Hills",
             category: "Domestic Hill Tracks Tour",
             duration: "3 Days / 2 Nights",
-            price: "৳6,800 per person",
+            price: "৳6,800",
+            label: "per person",
             highlights: [
-                "Konglak Pahar & Helipad Hilltop Cottage Stay",
-                "Chander Gari Open-Air Jeep Safari across Hills",
-                "Ruilui Para Tribal Culture Experience & Barbecue",
-                "Bandarban Nilgiri, Chimbuk Hill & Boga Lake Sightseeing",
-                "Professional Tour Guide & Armed Escort Security"
+                "Konglak & Helipad hilltop cloud cottage stay",
+                "Chander Gari open-air jeep safari across misty hills",
+                "Ruilui Para tribal village culture & hilltop BBQ dinner",
+                "Bandarban Nilgiri, Chimbuk Hill & Shailopropat Waterfall",
+                "Professional armed escort & certified local guide",
             ],
-            itinerary: "Day 1: Khagrachari to Sajek Valley. Day 2: Konglak Peak Sunrise & Bandarban Transit. Day 3: Nilgiri Cloud View & Return."
+            itinerary: [
+                { day: "Day 1", detail: "Khagrachari pickup, Sajek Valley arrival, Helipad sunset." },
+                { day: "Day 2", detail: "Konglak sunrise trek, Jeep safari, transfer to Bandarban Nilgiri." },
+                { day: "Day 3", detail: "Chimbuk Hill, Shailopropat Waterfall, return journey." },
+            ],
         },
         {
-            title: "Kashmir Paradise & Houseboat Experience",
+            title: "Kashmir Paradise & Houseboat",
             category: "International Himalayan Tour",
             duration: "5 Days / 4 Nights",
-            price: "৳28,500 per person",
+            price: "৳28,500",
+            label: "per person",
             highlights: [
-                "Dal Lake Traditional Deluxe Houseboat Stay",
-                "Shikara Boat Ride across Dal Lake & Floating Market",
-                "Gulmarg Snow Gondola Cable Car Ride (Phase 1 & 2)",
-                "Pahalgam Betaab Valley & Chandanwari Tour",
-                "Full Indian Tourist Visa Application Assistance"
+                "Dal Lake traditional deluxe houseboat stay (2 nights)",
+                "Shikara boat ride across Dal Lake & floating vegetable market",
+                "Gulmarg Gondola cable car ride — Phase 1 & Phase 2",
+                "Pahalgam Betaab Valley, Chandanwari & Aru Valley tour",
+                "Full Indian Tourist Visa assistance & airport transfers",
             ],
-            itinerary: "Day 1: Srinagar Airport Pick & Houseboat Check-in. Day 2: Gulmarg Snow Adventure. Day 3: Pahalgam Valley. Day 4: Srinagar Mughal Gardens. Day 5: Departure."
+            itinerary: [
+                { day: "Day 1", detail: "Srinagar arrival, Dal Lake houseboat check-in, Shikara ride." },
+                { day: "Day 2", detail: "Gulmarg Snow Gondola, meadow walk, return to Srinagar." },
+                { day: "Day 3", detail: "Pahalgam Betaab Valley, Chandanwari, Aru Valley excursion." },
+                { day: "Day 4", detail: "Mughal Gardens (Shalimar, Nishat), local market shopping." },
+                { day: "Day 5", detail: "Departure transfer to Srinagar Airport." },
+            ],
         },
         {
-            title: "Dubai & Abu Dhabi Grand Luxury Tour",
+            title: "Dubai & Abu Dhabi Grand Tour",
             category: "International Middle East Package",
             duration: "5 Days / 4 Nights",
-            price: "৳45,000 per person",
+            price: "৳45,000",
+            label: "per person",
             highlights: [
-                "4-Star City Hotel Stay in Bur Dubai / Deira",
-                "Desert Safari 4x4 Dune Bashing with BBQ Dinner & Belly Dance",
-                "Burj Khalifa At The Top 124th Floor Observation Ticket",
-                "Abu Dhabi Grand Mosque & Sheikh Zayed Palace Tour",
-                "30-Day Express UAE Tourist E-Visa Included"
+                "4-Star Hotel stay in Bur Dubai or Deira city centre",
+                "Desert Safari — 4×4 dune bashing, BBQ dinner & belly dance",
+                "Burj Khalifa At The Top (124th floor) observation ticket",
+                "Abu Dhabi Grand Mosque & Sheikh Zayed Palace Museum",
+                "30-day Express UAE Tourist E-Visa fully included",
             ],
-            itinerary: "Day 1: Dubai Airport Transfer & Marina Cruise. Day 2: Half Day City Tour & Desert Safari. Day 3: Abu Dhabi Day Trip. Day 4: Burj Khalifa & Dubai Mall. Day 5: Departure."
+            itinerary: [
+                { day: "Day 1", detail: "Dubai arrival, Dubai Marina & JBR evening walk." },
+                { day: "Day 2", detail: "City tour (Deira, Gold Souk, Creek) + Desert Safari night." },
+                { day: "Day 3", detail: "Abu Dhabi day trip — Grand Mosque & Yas Island." },
+                { day: "Day 4", detail: "Burj Khalifa, Dubai Mall, Dubai Frame & night market." },
+                { day: "Day 5", detail: "Duty-free shopping, airport departure." },
+            ],
         },
         {
             title: "Thailand & Phuket Island Gateway",
-            category: "South East Asia Tour",
+            category: "South East Asia Package",
             duration: "5 Days / 4 Nights",
-            price: "৳32,000 per person",
+            price: "৳32,000",
+            label: "per person",
             highlights: [
-                "Bangkok 4-Star Hotel & Phuket Beach Resort Stay",
-                "Phi Phi Island Speedboat Tour with Buffet Lunch",
-                "Coral Island Water Sports & Snorkeling",
-                "Bangkok Temples, Safari World & Shopping Tour",
-                "Express Thailand Tourist E-Visa Approval"
+                "Bangkok 4-Star Hotel + Phuket Patong Beach Resort",
+                "Phi Phi Island & Maya Bay speedboat tour with buffet lunch",
+                "Coral Island snorkeling, banana boat & parasailing",
+                "Safari World, Grand Palace & Chatuchak Weekend Market",
+                "Express Thailand Tourist E-Visa processing included",
             ],
-            itinerary: "Day 1: Arrive Bangkok & Flight to Phuket. Day 2: Phi Phi & Maya Bay Speedboat. Day 3: Bangkok City & Safari World. Day 4: Shopping at Pratunam. Day 5: Departure."
+            itinerary: [
+                { day: "Day 1", detail: "Bangkok arrival, hotel check-in, night market & street food." },
+                { day: "Day 2", detail: "Bangkok → Phuket flight, Patong beach afternoon." },
+                { day: "Day 3", detail: "Phi Phi Island & Maya Bay speedboat full day tour." },
+                { day: "Day 4", detail: "Bangkok return, Safari World & Marine Park visit." },
+                { day: "Day 5", detail: "Grand Palace, Chatuchak market, departure." },
+            ],
         },
         {
-            title: "Executive Umrah & Pilgrimage Package",
-            category: "Religious Pilgrimage Package",
+            title: "Executive 5-Star Umrah Package",
+            category: "Religious Pilgrimage",
             duration: "10 Days",
-            price: "৳1,15,000 per person",
+            price: "৳1,15,000",
+            label: "per person",
             highlights: [
-                "Makkah 5-Star Hotel Stay within 150 Meters of Haram",
-                "Madinah 5-Star Hotel Stay near Masjid al-Nabawi",
-                "Express Umrah Visa Approval & Insurance Coverage",
-                "Round-trip Flight Ticket via Biman / Saudi Airlines",
-                "Private AC Bus Transport for Makkah & Madinah Ziyarat"
+                "Makkah Mukarramah 5-Star Hotel within 150 m of Masjid Al-Haram",
+                "Madinah Munawwarah 5-Star Hotel adjacent to Masjid Al-Nabawi",
+                "Express Umrah Visa approval + full travel insurance",
+                "Round-trip flight via Biman Bangladesh / Saudi Airlines",
+                "Private AC mini-bus for Makkah & Madinah Ziyarat tours",
             ],
-            itinerary: "5 Nights Makkah Mukarramah + 4 Nights Madinah Munawwarah with Guided Ziyarat Tours."
-        }
+            itinerary: [
+                { day: "Days 1–5", detail: "Makkah Mukarramah — Umrah rituals, Haram ibadah, Ziyarat." },
+                { day: "Days 6–9", detail: "Madinah Munawwarah — Masjid Nabawi, Quba Mosque, Ziyarat." },
+                { day: "Day 10", detail: "Jeddah departure, return flight to Dhaka." },
+            ],
+        },
     ];
 
-    document.querySelectorAll('.view-case-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const index = parseInt(e.currentTarget.getAttribute('data-project')) || 0;
-            const project = tourPackages[index];
-            if (!project || !caseStudyModal) return;
+    // ── DOM Helpers ──────────────────────────────────────────────
+    const $  = (sel, ctx = document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
-            caseModalTitle.innerHTML = `<i class="fa-solid fa-plane" style="color: var(--primary);"></i> ${escapeHtml(project.title)}`;
-            caseModalBody.innerHTML = `
-                <div style="margin-bottom: 20px; display:flex; gap: 12px; align-items:center; flex-wrap:wrap;">
-                    <span class="badge">${escapeHtml(project.category)}</span>
-                    <span class="badge badge-emerald"><i class="fa-solid fa-clock"></i> ${escapeHtml(project.duration)}</span>
-                    <span class="tag" style="color: var(--primary); font-weight:700; font-size: 14px;">${escapeHtml(project.price)}</span>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <h4 style="color: var(--primary); margin-bottom: 8px;"><i class="fa-solid fa-star"></i> Package Inclusions & Highlights</h4>
-                    <ul style="padding-left: 20px; color: var(--text-muted);">
-                        ${project.highlights.map(h => `<li style="margin-bottom: 6px;">${escapeHtml(h)}</li>`).join('')}
-                    </ul>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <h4 style="color: var(--secondary); margin-bottom: 8px;"><i class="fa-solid fa-map-location-dot"></i> Tour Itinerary Overview</h4>
-                    <p style="color: var(--text-muted);">${escapeHtml(project.itinerary)}</p>
-                </div>
-                <button class="btn btn-primary btn-block modal-book-now-btn" data-title="${escapeHtml(project.title)}" data-price="${escapeHtml(project.price)}">
-                    <i class="fa-brands fa-whatsapp"></i> Reserve This Package Now
-                </button>
-            `;
+    function esc(str) {
+        if (!str) return '';
+        return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+    }
 
-            caseStudyModal.classList.add('active');
+    // ── Toast ───────────────────────────────────────────────────
+    let toastTimer;
+    function toast(msg, duration = 3400) {
+        const el = $('#toast');
+        if (!el) return;
+        clearTimeout(toastTimer);
+        el.textContent = msg;
+        el.style.display = 'block';
+        el.style.animation = 'none';
+        void el.offsetWidth; // reflow
+        el.style.animation = '';
+        toastTimer = setTimeout(() => { el.style.display = 'none'; }, duration);
+    }
 
-            const modalBookBtn = caseModalBody.querySelector('.modal-book-now-btn');
-            if (modalBookBtn) {
-                modalBookBtn.addEventListener('click', () => {
-                    const title = modalBookBtn.getAttribute('data-title');
-                    const price = modalBookBtn.getAttribute('data-price');
-                    caseStudyModal.classList.remove('active');
-                    
-                    const scopeInput = document.getElementById('contactScope');
-                    const detailsInput = document.getElementById('contactDetails');
-                    if (scopeInput) scopeInput.value = `${title} (${price})`;
-                    if (detailsInput) detailsInput.value = `Hi Cholojai Tours! I would like to book the ${title} package (${price}). Please contact me with dates.`;
+    // ── WhatsApp ─────────────────────────────────────────────────
+    function openWA(text) {
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+    }
 
-                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-                    showToast('✅ Package details copied to booking form!');
-                });
+    // ── Badge count ───────────────────────────────────────────────
+    function updateBadge() {
+        const b = $('#inquiryBadge');
+        if (b) b.textContent = leads.length;
+    }
+    updateBadge();
+
+    // ── Navbar: scroll effect & active links ─────────────────────
+    const navbar = $('#navbar');
+    window.addEventListener('scroll', () => {
+        if (!navbar) return;
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+
+        // Active nav link highlighting
+        const sections = $$('section[id]');
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 110) current = s.id;
+        });
+        $$('.nav-links a, .mobile-nav a').forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
+        });
+    }, { passive: true });
+
+    // ── Mobile Menu ───────────────────────────────────────────────
+    const mobileMenuBtn = $('#mobileMenuBtn');
+    const mobileNav     = $('#mobileNav');
+    if (mobileMenuBtn && mobileNav) {
+        mobileMenuBtn.addEventListener('click', () => {
+            const open = mobileNav.classList.toggle('open');
+            mobileMenuBtn.innerHTML = open
+                ? '<i class="fa-solid fa-xmark"></i>'
+                : '<i class="fa-solid fa-bars"></i>';
+        });
+        // Close on link click
+        $$('.mobile-nav-link').forEach(a => {
+            a.addEventListener('click', () => {
+                mobileNav.classList.remove('open');
+                mobileMenuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            });
+        });
+    }
+
+    // ── Theme Toggle ──────────────────────────────────────────────
+    const themeBtn = $('#themeToggleBtn');
+    if (localStorage.getItem(THEME_KEY) === 'light') {
+        document.body.classList.add('light-theme');
+        if (themeBtn) themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    }
+    themeBtn?.addEventListener('click', () => {
+        const light = document.body.classList.toggle('light-theme');
+        themeBtn.innerHTML = light ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        localStorage.setItem(THEME_KEY, light ? 'light' : 'dark');
+        toast(light ? '☀️ Light mode on' : '🌙 Dark mode on');
+    });
+
+    // ── Scroll Reveal ─────────────────────────────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                revealObserver.unobserve(e.target);
             }
+        });
+    }, { threshold: 0.12 });
+    $$('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ── Package Filter Tabs ───────────────────────────────────────
+    $$('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            $$('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            $$('.package-card').forEach(card => {
+                const show = filter === 'all' || card.dataset.category === filter;
+                card.style.display = show ? 'flex' : 'none';
+            });
         });
     });
 
-    if (closeCaseModalBtn) {
-        closeCaseModalBtn.addEventListener('click', () => {
-            if (caseStudyModal) caseStudyModal.classList.remove('active');
+    // ── Package Detail Modal ──────────────────────────────────────
+    const pkgModal      = $('#pkgModal');
+    const pkgModalTitle = $('#pkgModalTitle');
+    const pkgModalBody  = $('#pkgModalBody');
+    const closePkgModal = $('#closePkgModal');
+
+    function openPkgModal(idx) {
+        const pkg = packages[idx];
+        if (!pkg || !pkgModal) return;
+
+        pkgModalTitle.innerHTML = `<i class="fa-solid fa-plane" style="color:var(--primary)"></i> ${esc(pkg.title)}`;
+        pkgModalBody.innerHTML = `
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;">
+                <span class="badge badge-gold">${esc(pkg.category)}</span>
+                <span class="badge badge-cyan"><i class="fa-regular fa-clock"></i> ${esc(pkg.duration)}</span>
+                <span style="font-size:18px;font-weight:800;font-family:'Outfit',sans-serif;color:var(--primary);display:flex;align-items:center;">${esc(pkg.price)} <small style="font-size:12px;color:var(--text-sub);margin-left:4px;">${esc(pkg.label)}</small></span>
+            </div>
+
+            <h4 style="font-size:15px;font-weight:700;margin-bottom:12px;color:var(--primary);">
+                <i class="fa-solid fa-circle-check"></i> What's Included
+            </h4>
+            <ul style="padding-left:18px;color:var(--text-sub);margin-bottom:24px;display:flex;flex-direction:column;gap:8px;">
+                ${pkg.highlights.map(h => `<li style="font-size:14px;line-height:1.6;">${esc(h)}</li>`).join('')}
+            </ul>
+
+            <h4 style="font-size:15px;font-weight:700;margin-bottom:12px;color:var(--accent);">
+                <i class="fa-solid fa-map-location-dot"></i> Tour Itinerary
+            </h4>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+                ${pkg.itinerary.map(it => `
+                    <div style="display:flex;gap:14px;align-items:flex-start;padding:12px;background:var(--bg-glass);border:1px solid var(--border);border-radius:var(--r-sm);">
+                        <span style="font-size:12px;font-weight:700;color:var(--primary);background:var(--primary-soft);padding:4px 10px;border-radius:var(--r-full);white-space:nowrap;">${esc(it.day)}</span>
+                        <span style="font-size:13px;color:var(--text-sub);line-height:1.6;">${esc(it.detail)}</span>
+                    </div>
+                `).join('')}
+            </div>
+
+            <button class="btn btn-primary btn-full btn-lg modal-book-btn" data-title="${esc(pkg.title)}" data-price="${esc(pkg.price)} ${esc(pkg.label)}">
+                <i class="fa-brands fa-whatsapp"></i> Reserve This Package on WhatsApp
+            </button>
+        `;
+
+        pkgModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Book button inside modal
+        pkgModalBody.querySelector('.modal-book-btn')?.addEventListener('click', (e) => {
+            const title = e.currentTarget.dataset.title;
+            const price = e.currentTarget.dataset.price;
+            pkgModal.classList.remove('active');
+            document.body.style.overflow = '';
+            $('#contactScope').value  = title + ' (' + price + ')';
+            $('#contactDetails').value = `Hi Cholojai Tours! I'd like to book "${title}" (${price}). Please share availability and dates.`;
+            $('#contact').scrollIntoView({ behavior: 'smooth' });
+            toast('✅ Package details pre-filled in the form below!');
         });
     }
 
-    // --- 5. Contact & Booking Submission ---
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+    $$('.view-pkg-btn').forEach(btn => {
+        btn.addEventListener('click', () => openPkgModal(parseInt(btn.dataset.pkg)));
+    });
 
-            const name = document.getElementById('contactName').value.trim();
-            const contact = document.getElementById('contactContact').value.trim();
-            const scope = document.getElementById('contactScope').value.trim() || 'General Tour Inquiry';
-            const details = document.getElementById('contactDetails').value.trim() || 'No specific notes.';
+    closePkgModal?.addEventListener('click', () => {
+        pkgModal?.classList.remove('active');
+        document.body.style.overflow = '';
+    });
 
-            if (!name || !contact) {
-                showToast('❌ Please provide your Name and Mobile/WhatsApp number!');
-                return;
-            }
+    // ── Budget Estimator ──────────────────────────────────────────
+    const calcDest   = $('#calcDest');
+    const calcPax    = $('#calcPax');
+    const addonChecks = $$('.addon-check');
+    const sumDest    = $('#sumDest');
+    const sumAddons  = $('#sumAddons');
+    const sumPax     = $('#sumPax');
+    const totalEl    = $('#totalAmount');
 
-            const newInquiry = {
-                id: Date.now(),
-                date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-                name: name,
-                contact: contact,
-                scope: scope,
-                details: details
-            };
-
-            // Save locally
-            inquiries.unshift(newInquiry);
-            localStorage.setItem('cholojai_inquiries', JSON.stringify(inquiries));
-            updateInquiryBadge();
-
-            // Send to Backend API Server
-            sendInquiryToBackend({
-                name: name,
-                phone: contact,
-                destination: scope,
-                budget: 'Tour Booking Request',
-                source: 'Cholojai Tours Web Form'
-            });
-
-            showToast('✅ Booking inquiry submitted! Opening WhatsApp...');
-
-            const text = `Hi Cholojai Tours! My name is *${name}* (${contact}). I would like to book / inquire about *${scope}*. Travel Notes: ${details}`;
-            setTimeout(() => {
-                openWhatsAppWithText(text);
-                contactForm.reset();
-            }, 800);
-        });
+    function formatBDT(n) {
+        // Use Bangladeshi comma style: 1,00,000
+        return '৳' + n.toLocaleString('en-IN');
     }
 
-    // Async Backend API Poster
-    async function sendInquiryToBackend(data) {
-        try {
-            const res = await fetch(API_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
-            const result = await res.json();
-            if (result.success) {
-                console.log('✅ Lead saved to backend database:', result.lead_id);
+    function calcBudget() {
+        if (!calcDest || !calcPax) return;
+
+        const base   = parseInt(calcDest.value) || 0;
+        const paxMul = parseFloat(calcPax.value) || 1;
+        const destName = calcDest.options[calcDest.selectedIndex]?.dataset.name || '';
+        const paxName  = calcPax.options[calcPax.selectedIndex]?.text || '';
+
+        let addonsSum = 0;
+        addonChecks.forEach((chk, i) => {
+            const wrap = document.getElementById(`addon-wrap-${i}`);
+            if (chk.checked) {
+                addonsSum += parseInt(chk.value) || 0;
+                wrap?.classList.add('active');
+            } else {
+                wrap?.classList.remove('active');
             }
-        } catch (err) {
-            console.log('Backend API offline or CORS fallback; saved locally in browser state.');
+        });
+
+        const total = Math.round((base + addonsSum) * paxMul);
+
+        if (sumDest)   sumDest.textContent   = destName.split('(')[0].trim();
+        if (sumAddons) sumAddons.textContent  = formatBDT(addonsSum);
+        if (sumPax)    sumPax.textContent     = paxName.split('[')[0].trim();
+        if (totalEl)   totalEl.textContent    = formatBDT(total);
+    }
+
+    calcDest?.addEventListener('change', calcBudget);
+    calcPax?.addEventListener('change', calcBudget);
+    addonChecks.forEach(chk => chk.addEventListener('change', calcBudget));
+    calcBudget(); // initial render
+
+    // Reserve button
+    $('#reserveBtn')?.addEventListener('click', () => {
+        const destName = calcDest?.options[calcDest.selectedIndex]?.dataset.name || 'Tour Package';
+        const total    = totalEl?.textContent || '৳0';
+        const paxName  = calcPax?.options[calcPax.selectedIndex]?.text.split('[')[0].trim() || 'Solo';
+
+        if ($('#contactScope'))  $('#contactScope').value  = `${destName} — ${total} (${paxName})`;
+        if ($('#contactDetails')) $('#contactDetails').value = `Hi Cholojai Tours! I used the calculator and my estimated budget is ${total} for ${destName} (${paxName}). Please confirm availability.`;
+
+        $('#contact').scrollIntoView({ behavior: 'smooth' });
+        toast('✅ Estimate pre-filled in the booking form!');
+    });
+
+    // ── Contact / Booking Form ────────────────────────────────────
+    const form = $('#contactForm');
+    form?.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name    = $('#contactName')?.value.trim();
+        const contact = $('#contactContact')?.value.trim();
+        const scope   = $('#contactScope')?.value.trim()   || 'General Tour Inquiry';
+        const details = $('#contactDetails')?.value.trim() || 'No additional notes.';
+
+        if (!name || !contact) {
+            toast('❌ Please enter your name and WhatsApp number.');
+            return;
         }
-    }
 
-    // --- 6. Admin Inquiries Dashboard Modal ---
-    function renderInquiriesTable() {
-        if (!inquiriesTableBody) return;
-        inquiriesTableBody.innerHTML = '';
+        const lead = {
+            id:      Date.now(),
+            date:    new Date().toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' }),
+            name,
+            contact,
+            scope,
+            details,
+        };
 
-        if (inquiries.length === 0) {
-            if (noInquiriesMsg) noInquiriesMsg.style.display = 'block';
-            document.querySelector('.table-responsive').style.display = 'none';
+        leads.unshift(lead);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+        updateBadge();
+
+        // Post to Vercel API (fire and forget)
+        fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, phone: contact, destination: scope, budget: 'Booking Request', source: 'Cholojai Web Form' }),
+        }).catch(() => {});
+
+        toast('✅ Inquiry saved! Opening WhatsApp…');
+        const text = `Hi Cholojai Tours! 👋\n\nName: *${name}*\nContact: ${contact}\nDestination: *${scope}*\n\nNotes: ${details}`;
+        setTimeout(() => {
+            openWA(text);
+            form.reset();
+        }, 900);
+    });
+
+    // ── Admin Leads Modal ─────────────────────────────────────────
+    const adminModal  = $('#adminModal');
+    const closeAdmin  = $('#closeAdminBtn');
+    const leadsBody   = $('#leadsBody');
+    const noLeadsMsg  = $('#noLeadsMsg');
+    const leadsTable  = $('#leadsTable');
+    const clearLeads  = $('#clearLeadsBtn');
+    const exportLeads = $('#exportLeadsBtn');
+
+    function renderLeads() {
+        if (!leadsBody) return;
+        leadsBody.innerHTML = '';
+
+        if (leads.length === 0) {
+            if (noLeadsMsg)  noLeadsMsg.style.display  = 'block';
+            if (leadsTable)  leadsTable.style.display  = 'none';
         } else {
-            if (noInquiriesMsg) noInquiriesMsg.style.display = 'none';
-            document.querySelector('.table-responsive').style.display = 'block';
+            if (noLeadsMsg)  noLeadsMsg.style.display  = 'none';
+            if (leadsTable)  leadsTable.style.display  = 'table';
 
-            inquiries.forEach(inq => {
+            leads.forEach(lead => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>${escapeHtml(inq.date)}</td>
-                    <td><strong>${escapeHtml(inq.name)}</strong></td>
-                    <td>${escapeHtml(inq.contact)}</td>
-                    <td>${escapeHtml(inq.scope)}</td>
-                    <td><span class="tag" style="color:var(--primary); font-weight:700;">Confirmed Lead</span></td>
+                    <td style="white-space:nowrap;">${esc(lead.date)}</td>
+                    <td><strong>${esc(lead.name)}</strong></td>
+                    <td>${esc(lead.contact)}</td>
+                    <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${esc(lead.scope)}">${esc(lead.scope)}</td>
+                    <td><span class="tag" style="color:var(--emerald);border-color:rgba(16,185,129,0.3);">Active</span></td>
                     <td>
-                        <button class="btn btn-secondary btn-sm chat-inq-btn" data-contact="${inq.contact}" data-name="${inq.name}">
-                            <i class="fa-brands fa-whatsapp"></i> Chat
+                        <button class="btn btn-ghost btn-sm wa-lead-btn" data-name="${esc(lead.name)}" data-contact="${esc(lead.contact)}" style="gap:6px;">
+                            <i class="fa-brands fa-whatsapp" style="color:#25d366"></i> Chat
                         </button>
                     </td>
                 `;
-                inquiriesTableBody.appendChild(tr);
+                leadsBody.appendChild(tr);
             });
 
-            document.querySelectorAll('.chat-inq-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const c = e.currentTarget.getAttribute('data-contact');
-                    const n = e.currentTarget.getAttribute('data-name');
-                    openWhatsAppWithText(`Hi ${n}! This is Cholojai Tours & Travels following up on your tour package inquiry.`);
+            $$('.wa-lead-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    openWA(`Hi ${btn.dataset.name}! This is Cholojai Tours & Travels following up on your travel inquiry. How can we help you? 🌍`);
                 });
             });
         }
     }
 
-    function updateInquiryBadge() {
-        const badge = document.getElementById('inquiryBadge');
-        if (badge) badge.innerText = inquiries.length;
+    function openAdmin() {
+        renderLeads();
+        adminModal?.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
 
-    if (openAdminBtn) openAdminBtn.addEventListener('click', () => { renderInquiriesTable(); adminModal.classList.add('active'); });
-    if (footerAdminBtn) footerAdminBtn.addEventListener('click', () => { renderInquiriesTable(); adminModal.classList.add('active'); });
-    if (closeAdminBtn) closeAdminBtn.addEventListener('click', () => { adminModal.classList.remove('active'); });
-
-    window.addEventListener('click', (e) => {
-        if (e.target === adminModal) adminModal.classList.remove('active');
-        if (e.target === caseStudyModal) caseStudyModal.classList.remove('active');
+    $('#openAdminBtn')?.addEventListener('click', openAdmin);
+    $('#footerAdminBtn')?.addEventListener('click', openAdmin);
+    closeAdmin?.addEventListener('click', () => {
+        adminModal?.classList.remove('active');
+        document.body.style.overflow = '';
     });
 
-    if (clearInquiriesBtn) {
-        clearInquiriesBtn.addEventListener('click', () => {
-            if (confirm('Clear all stored traveler inquiries?')) {
-                inquiries = [];
-                localStorage.removeItem('cholojai_inquiries');
-                updateInquiryBadge();
-                renderInquiriesTable();
-                showToast('Inquiries cleared.');
+    clearLeads?.addEventListener('click', () => {
+        if (!confirm('Clear all stored lead inquiries?')) return;
+        leads = [];
+        localStorage.removeItem(STORAGE_KEY);
+        updateBadge();
+        renderLeads();
+        toast('🗑️ All leads cleared.');
+    });
+
+    exportLeads?.addEventListener('click', () => {
+        if (leads.length === 0) { toast('No leads to export.'); return; }
+        let csv = 'DATE\tNAME\tCONTACT\tDESTINATION\tDETAILS\n';
+        leads.forEach(l => { csv += `${l.date}\t${l.name}\t${l.contact}\t${l.scope}\t${l.details}\n`; });
+        const a   = Object.assign(document.createElement('a'), {
+            href:     URL.createObjectURL(new Blob([csv], { type: 'text/plain;charset=utf-8' })),
+            download: `cholojai_leads_${Date.now()}.txt`,
+        });
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        toast('📥 Leads exported!');
+    });
+
+    // ── Close modals on backdrop click ───────────────────────────
+    [adminModal, pkgModal].forEach(modal => {
+        modal?.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
-    }
+    });
 
-    if (exportInquiriesBtn) {
-        exportInquiriesBtn.addEventListener('click', () => {
-            if (inquiries.length === 0) {
-                showToast('No inquiries to export.');
-                return;
-            }
-            let content = "DATE\tTRAVELER_NAME\tCONTACT\tDESTINATION_SCOPE\tDETAILS\n";
-            inquiries.forEach(i => {
-                content += `${i.date}\t${i.name}\t${i.contact}\t${i.scope}\t${i.details}\n`;
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            $$('.modal.active').forEach(m => {
+                m.classList.remove('active');
+                document.body.style.overflow = '';
             });
-
-            const blob = new Blob([content], { type: 'text/plain;charset=utf-8;' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement("a");
-            link.setAttribute("href", url);
-            link.setAttribute("download", `cholojai_leads_${Date.now()}.txt`);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        });
-    }
-
-    // --- Helpers ---
-    function openWhatsAppWithText(text) {
-        const phone = "8801700000000";
-        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
-    }
-
-    function showToast(message) {
-        const toast = document.getElementById('toast');
-        if (toast) {
-            toast.innerText = message;
-            toast.style.display = 'block';
-            setTimeout(() => {
-                toast.style.display = 'none';
-            }, 3200);
         }
-    }
+    });
 
-    function escapeHtml(text) {
-        return text ? text.replace(/[&<>"']/g, function(m) {
-            return {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#039;'
-            }[m];
-        }) : '';
-    }
+    // ── Smooth nav link scrolling ─────────────────────────────────
+    $$('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                const offset = 80;
+                window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+            }
+        });
+    });
 
-    // Initial calculation call
-    calculateEstimate();
-});
+})();

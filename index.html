@@ -3,658 +3,748 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cholojai Tours & Travels | Tour Packages, Visa Assistance & Flight Bookings</title>
-    <meta name="description" content="Cholojai Tours & Travels - Premier Travel & Visa Agency in Bangladesh. Domestic packages (Cox's Bazar, Sajek), International tours (Kashmir, Dubai, Thailand) and Express Visa Processing.">
-    
+    <title>Cholojai Tours & Travels | Premium Tour Packages, Visa & Flights — Bangladesh</title>
+    <meta name="description" content="Cholojai Tours & Travels — Bangladesh's premier travel agency. Cox's Bazar, Sajek, Kashmir, Dubai, Thailand, Umrah packages. Express visa processing & flight tickets.">
+    <meta property="og:title" content="Cholojai Tours & Travels | Premium Tour Packages">
+    <meta property="og:description" content="Premium domestic & international tour packages, express visa processing, and flight booking — all from one trusted agency.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#f59e0b">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Header & Navigation -->
-    <header class="navbar" id="navbar">
-        <div class="container flex-between">
-            <a href="#" class="logo">
-                <div class="logo-icon"><i class="fa-solid fa-plane-departure"></i></div>
-                <span>Cholojai<span class="gradient-text">Tours</span></span>
+<!-- =========================================================
+     NAVBAR
+     ========================================================= -->
+<header class="navbar" id="navbar">
+    <div class="container navbar-inner">
+        <a href="#" class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-plane-departure"></i></div>
+            <span>Cholojai<span class="gradient-text">Tours</span></span>
+        </a>
+
+        <nav class="nav-links" id="desktopNav">
+            <a href="#packages">Tour Packages</a>
+            <a href="#services">Visa & Flights</a>
+            <a href="#why-us">Why Us</a>
+            <a href="#estimator">Cost Calculator</a>
+            <a href="#testimonials">Reviews</a>
+            <a href="#contact">Book Now</a>
+        </nav>
+
+        <div class="header-cta">
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" aria-label="Toggle theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="btn btn-ghost btn-sm" id="openAdminBtn">
+                <i class="fa-solid fa-clipboard-list"></i> Leads <span id="inquiryBadge" style="background:var(--primary);color:#000;border-radius:99px;padding:1px 7px;font-size:11px;margin-left:2px;">0</span>
+            </button>
+            <a href="#contact" class="btn btn-primary btn-sm">
+                <i class="fa-brands fa-whatsapp"></i> Book Tour
             </a>
-
-            <nav class="nav-links">
-                <a href="#packages">Tour Packages</a>
-                <a href="#visa">Visa & Flight Services</a>
-                <a href="#estimator">Cost Calculator</a>
-                <a href="#testimonials">Reviews</a>
-                <a href="#contact">Contact & Booking</a>
-            </nav>
-
-            <div class="header-actions">
-                <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Light/Dark Mode">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
-                <button class="btn btn-secondary btn-sm" id="openAdminBtn">
-                    <i class="fa-solid fa-clipboard-list"></i> Leads (<span id="inquiryBadge">0</span>)
-                </button>
-                <a href="#contact" class="btn btn-primary btn-sm">
-                    <i class="fa-brands fa-whatsapp"></i> Book Tour Now
-                </a>
-            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Open menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
-    </header>
+    </div>
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="#packages" class="mobile-nav-link">Tour Packages</a>
+        <a href="#services" class="mobile-nav-link">Visa & Flights</a>
+        <a href="#why-us" class="mobile-nav-link">Why Us</a>
+        <a href="#estimator" class="mobile-nav-link">Cost Calculator</a>
+        <a href="#testimonials" class="mobile-nav-link">Reviews</a>
+        <a href="#contact" class="mobile-nav-link">Book Now</a>
+    </nav>
+</header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-glow-1"></div>
-        <div class="hero-glow-2"></div>
 
-        <div class="container hero-grid">
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+<section class="hero" id="hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+
+    <div class="container">
+        <div class="hero-grid">
+            <!-- Left: Copy -->
             <div class="hero-content">
-                <div class="badge badge-emerald">
-                    <i class="fa-solid fa-star" style="font-size: 11px;"></i> #1 Rated Travel & Visa Agency in Bangladesh
+                <div class="hero-eyebrow">
+                    <span class="hero-eyebrow-dot"></span>
+                    #1 Trusted Travel Agency in Bangladesh
                 </div>
 
                 <h1 class="hero-title">
-                    Explore the World with <span class="gradient-text">Cholojai Tours</span>
+                    Explore the World<br>with <span class="gradient-text">Cholojai Tours</span>
                 </h1>
 
                 <p class="hero-subtitle">
-                    Unforgettable domestic holidays, luxury international tour packages, fast-track visa processing, and instant air ticket reservations with 24/7 dedicated travel support.
+                    Unforgettable domestic holidays, luxury international packages, express visa processing, and instant flight bookings — all in one place with 24/7 dedicated support.
                 </p>
 
                 <div class="hero-actions">
                     <a href="#estimator" class="btn btn-primary btn-lg">
-                        <i class="fa-solid fa-calculator"></i> Calculate Tour Budget
+                        <i class="fa-solid fa-calculator"></i> Calculate Budget
                     </a>
-                    <a href="#packages" class="btn btn-secondary btn-lg">
-                        <i class="fa-solid fa-compass"></i> View Tour Packages
+                    <a href="#packages" class="btn btn-ghost btn-lg">
+                        <i class="fa-solid fa-compass"></i> View Packages
                     </a>
                 </div>
 
-                <div class="hero-stats-grid">
+                <div class="hero-stats">
                     <div class="stat-item">
-                        <h3 class="gradient-text">15,000+</h3>
-                        <p>Happy Travelers</p>
+                        <div class="stat-num">15K+</div>
+                        <div class="stat-label">Happy Travelers</div>
                     </div>
                     <div class="stat-item">
-                        <h3 class="gradient-text">99.4%</h3>
-                        <p>Visa Success Rate</p>
+                        <div class="stat-num">99.4%</div>
+                        <div class="stat-label">Visa Success Rate</div>
                     </div>
                     <div class="stat-item">
-                        <h3 class="gradient-text">50+</h3>
-                        <p>Global Destinations</p>
+                        <div class="stat-num">50+</div>
+                        <div class="stat-label">Destinations</div>
                     </div>
                 </div>
             </div>
 
+            <!-- Right: Visual -->
             <div class="hero-visual">
-                <div class="profile-card-frame">
-                    <div class="profile-avatar-box">
-                        <div class="avatar-graphic">
-                            <i class="fa-solid fa-earth-americas"></i>
+                <div class="hero-card">
+                    <div class="chip chip-1">
+                        <div class="chip-icon"><i class="fa-solid fa-passport" style="color:var(--primary)"></i></div>
+                        <div class="chip-text">
+                            <strong>Express Visa</strong>
+                            <span>India · Dubai · Schengen</span>
                         </div>
                     </div>
 
-                    <div class="floating-badge floating-badge-1">
-                        <i class="fa-solid fa-passport" style="color: #06b6d4; font-size: 22px;"></i>
+                    <div class="hero-map-box">
+                        <i class="fa-solid fa-earth-americas globe-icon"></i>
+                    </div>
+
+                    <div class="chip chip-2">
+                        <div class="chip-icon"><i class="fa-solid fa-hotel" style="color:var(--accent)"></i></div>
+                        <div class="chip-text">
+                            <strong>5-Star Resorts</strong>
+                            <span>Exclusive Group Deals</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     MARQUEE BAND
+     ========================================================= -->
+<div class="marquee-section">
+    <div class="marquee-track">
+        <div class="marquee-inner">
+            <div class="marquee-pill"><i class="fa-solid fa-umbrella-beach"></i> Cox's Bazar &amp; St. Martin</div>
+            <div class="marquee-pill"><i class="fa-solid fa-mountain"></i> Sajek Valley &amp; Bandarban</div>
+            <div class="marquee-pill"><i class="fa-solid fa-snowflake"></i> Kashmir &amp; Ladakh</div>
+            <div class="marquee-pill"><i class="fa-solid fa-city"></i> Dubai &amp; Abu Dhabi</div>
+            <div class="marquee-pill"><i class="fa-solid fa-plane"></i> Thailand &amp; Phuket</div>
+            <div class="marquee-pill"><i class="fa-solid fa-kaaba"></i> Executive Umrah</div>
+            <div class="marquee-pill"><i class="fa-solid fa-passport"></i> Instant Visa Processing</div>
+            <div class="marquee-pill"><i class="fa-solid fa-ticket-simple"></i> Air Ticket Booking</div>
+        </div>
+        <div class="marquee-inner" aria-hidden="true">
+            <div class="marquee-pill"><i class="fa-solid fa-umbrella-beach"></i> Cox's Bazar &amp; St. Martin</div>
+            <div class="marquee-pill"><i class="fa-solid fa-mountain"></i> Sajek Valley &amp; Bandarban</div>
+            <div class="marquee-pill"><i class="fa-solid fa-snowflake"></i> Kashmir &amp; Ladakh</div>
+            <div class="marquee-pill"><i class="fa-solid fa-city"></i> Dubai &amp; Abu Dhabi</div>
+            <div class="marquee-pill"><i class="fa-solid fa-plane"></i> Thailand &amp; Phuket</div>
+            <div class="marquee-pill"><i class="fa-solid fa-kaaba"></i> Executive Umrah</div>
+            <div class="marquee-pill"><i class="fa-solid fa-passport"></i> Instant Visa Processing</div>
+            <div class="marquee-pill"><i class="fa-solid fa-ticket-simple"></i> Air Ticket Booking</div>
+        </div>
+    </div>
+</div>
+
+
+<!-- =========================================================
+     TOUR PACKAGES
+     ========================================================= -->
+<section class="section" id="packages">
+    <div class="container">
+        <div class="section-header center reveal">
+            <div class="badge badge-gold"><i class="fa-solid fa-sparkles"></i> Handcrafted Journeys</div>
+            <h2 class="section-title">Featured Tour Packages</h2>
+            <p class="section-subtitle">Carefully curated domestic & international tours with all-inclusive comfort and expert guidance.</p>
+        </div>
+
+        <div class="filter-bar reveal reveal-delay-1">
+            <button class="filter-btn active" data-filter="all">All Packages</button>
+            <button class="filter-btn" data-filter="domestic">🇧🇩 Domestic</button>
+            <button class="filter-btn" data-filter="international">🌏 International</button>
+            <button class="filter-btn" data-filter="visa">✈️ Visa &amp; Umrah</button>
+        </div>
+
+        <div class="packages-grid" id="packagesGrid">
+
+            <!-- Card 1 -->
+            <div class="package-card reveal reveal-delay-1" data-category="domestic">
+                <div class="pkg-img" style="background:linear-gradient(135deg,#0369a1,#075985);">
+                    <i class="fa-solid fa-umbrella-beach pkg-icon"></i>
+                    <span class="pkg-label">Domestic</span>
+                    <span class="pkg-duration">3D / 2N</span>
+                    <div class="pkg-overlay">
+                        <button class="btn btn-primary btn-sm view-pkg-btn" data-pkg="0">
+                            <i class="fa-solid fa-circle-info"></i> Full Details
+                        </button>
+                    </div>
+                </div>
+                <div class="pkg-body">
+                    <h3 class="pkg-title">Cox's Bazar &amp; St. Martin Island</h3>
+                    <p class="pkg-desc">Beachfront resort stay, St. Martin island cruise ticket, complimentary breakfast &amp; guided sightseeing along the world's longest natural beach.</p>
+                    <div class="pkg-footer">
+                        <div class="pkg-price">৳8,500 <span>per person</span></div>
+                        <div style="display:flex;gap:6px;">
+                            <span class="tag">Beach Resort</span>
+                            <span class="tag">Island Cruise</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="package-card reveal reveal-delay-2" data-category="domestic">
+                <div class="pkg-img" style="background:linear-gradient(135deg,#166534,#14532d);">
+                    <i class="fa-solid fa-mountain-sun pkg-icon"></i>
+                    <span class="pkg-label">Domestic</span>
+                    <span class="pkg-duration">3D / 2N</span>
+                    <div class="pkg-overlay">
+                        <button class="btn btn-primary btn-sm view-pkg-btn" data-pkg="1">
+                            <i class="fa-solid fa-circle-info"></i> Full Details
+                        </button>
+                    </div>
+                </div>
+                <div class="pkg-body">
+                    <h3 class="pkg-title">Sajek Valley &amp; Bandarban Hills</h3>
+                    <p class="pkg-desc">Hilltop cloud cottage stay at Konglak &amp; Helipad. Chander Gari jeep safari, Nilgiri sunrise &amp; tribal culture experience.</p>
+                    <div class="pkg-footer">
+                        <div class="pkg-price">৳6,800 <span>per person</span></div>
+                        <div style="display:flex;gap:6px;">
+                            <span class="tag">Hill Tracks</span>
+                            <span class="tag">Jeep Safari</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="package-card reveal reveal-delay-3" data-category="international">
+                <div class="pkg-img" style="background:linear-gradient(135deg,#4338ca,#312e81);">
+                    <i class="fa-solid fa-snowflake pkg-icon"></i>
+                    <span class="pkg-label">International</span>
+                    <span class="pkg-duration">5D / 4N</span>
+                    <div class="pkg-overlay">
+                        <button class="btn btn-primary btn-sm view-pkg-btn" data-pkg="2">
+                            <i class="fa-solid fa-circle-info"></i> Full Details
+                        </button>
+                    </div>
+                </div>
+                <div class="pkg-body">
+                    <h3 class="pkg-title">Kashmir Paradise &amp; Houseboat</h3>
+                    <p class="pkg-desc">Dal Lake deluxe houseboat, Gulmarg Gondola cable car, Pahalgam Betaab Valley &amp; full Indian tourist visa included.</p>
+                    <div class="pkg-footer">
+                        <div class="pkg-price">৳28,500 <span>per person</span></div>
+                        <div style="display:flex;gap:6px;">
+                            <span class="tag">Houseboat</span>
+                            <span class="tag">Visa Included</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="package-card reveal reveal-delay-1" data-category="international">
+                <div class="pkg-img" style="background:linear-gradient(135deg,#92400e,#78350f);">
+                    <i class="fa-solid fa-city pkg-icon"></i>
+                    <span class="pkg-label">International</span>
+                    <span class="pkg-duration">5D / 4N</span>
+                    <div class="pkg-overlay">
+                        <button class="btn btn-primary btn-sm view-pkg-btn" data-pkg="3">
+                            <i class="fa-solid fa-circle-info"></i> Full Details
+                        </button>
+                    </div>
+                </div>
+                <div class="pkg-body">
+                    <h3 class="pkg-title">Dubai &amp; Abu Dhabi Grand Tour</h3>
+                    <p class="pkg-desc">4-Star hotel, desert safari with BBQ dinner, Burj Khalifa 124th floor, Abu Dhabi Grand Mosque &amp; express UAE visa.</p>
+                    <div class="pkg-footer">
+                        <div class="pkg-price">৳45,000 <span>per person</span></div>
+                        <div style="display:flex;gap:6px;">
+                            <span class="tag">Desert Safari</span>
+                            <span class="tag">Burj Khalifa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="package-card reveal reveal-delay-2" data-category="international">
+                <div class="pkg-img" style="background:linear-gradient(135deg,#0f766e,#134e4a);">
+                    <i class="fa-solid fa-water pkg-icon"></i>
+                    <span class="pkg-label">International</span>
+                    <span class="pkg-duration">5D / 4N</span>
+                    <div class="pkg-overlay">
+                        <button class="btn btn-primary btn-sm view-pkg-btn" data-pkg="4">
+                            <i class="fa-solid fa-circle-info"></i> Full Details
+                        </button>
+                    </div>
+                </div>
+                <div class="pkg-body">
+                    <h3 class="pkg-title">Thailand &amp; Phuket Island Gateway</h3>
+                    <p class="pkg-desc">Bangkok city tour, Phi Phi Island speedboat, Maya Bay snorkeling, Safari World &amp; Thailand tourist e-visa processing.</p>
+                    <div class="pkg-footer">
+                        <div class="pkg-price">৳32,000 <span>per person</span></div>
+                        <div style="display:flex;gap:6px;">
+                            <span class="tag">Island Tour</span>
+                            <span class="tag">Speedboat</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="package-card reveal reveal-delay-3" data-category="visa">
+                <div class="pkg-img" style="background:linear-gradient(135deg,#713f12,#451a03);">
+                    <i class="fa-solid fa-kaaba pkg-icon"></i>
+                    <span class="pkg-label">Pilgrimage</span>
+                    <span class="pkg-duration">10 Days</span>
+                    <div class="pkg-overlay">
+                        <button class="btn btn-primary btn-sm view-pkg-btn" data-pkg="5">
+                            <i class="fa-solid fa-circle-info"></i> Full Details
+                        </button>
+                    </div>
+                </div>
+                <div class="pkg-body">
+                    <h3 class="pkg-title">Executive 5-Star Umrah Package</h3>
+                    <p class="pkg-desc">Makkah &amp; Madinah 5-star hotels near Haram, express Umrah visa, round-trip flights &amp; private Ziyarat transport.</p>
+                    <div class="pkg-footer">
+                        <div class="pkg-price">৳1,15,000 <span>per person</span></div>
+                        <div style="display:flex;gap:6px;">
+                            <span class="tag">5-Star Haram</span>
+                            <span class="tag">Flight Incl.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     SERVICES
+     ========================================================= -->
+<section class="section section-alt" id="services">
+    <div class="container">
+        <div class="section-header center reveal">
+            <div class="badge badge-cyan"><i class="fa-solid fa-gear"></i> Comprehensive Solutions</div>
+            <h2 class="section-title">Visa, Flights &amp; More</h2>
+            <p class="section-subtitle">We handle all documentation, bookings, and logistics so you can focus on the experience.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card reveal reveal-delay-1">
+                <div class="svc-icon"><i class="fa-solid fa-passport"></i></div>
+                <div class="svc-title">Visa Processing</div>
+                <p class="svc-desc">Complete document preparation &amp; embassy submission for India, Thailand, UAE, Malaysia, Singapore, UK, USA &amp; Schengen visas.</p>
+                <div class="svc-tags">
+                    <span class="tag">India IVAC</span>
+                    <span class="tag">Thailand E-Visa</span>
+                    <span class="tag">UAE 30/60 Day</span>
+                </div>
+            </div>
+            <div class="service-card reveal reveal-delay-2">
+                <div class="svc-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                <div class="svc-title">Air Ticket Booking</div>
+                <p class="svc-desc">Discounted domestic &amp; international flight tickets across Biman, US-Bangla, AirAsia, Emirates, Qatar Airways &amp; more.</p>
+                <div class="svc-tags">
+                    <span class="tag">Domestic</span>
+                    <span class="tag">International</span>
+                    <span class="tag">Date Change</span>
+                </div>
+            </div>
+            <div class="service-card reveal reveal-delay-3">
+                <div class="svc-icon"><i class="fa-solid fa-hotel"></i></div>
+                <div class="svc-title">Hotel &amp; Resort Booking</div>
+                <p class="svc-desc">Pre-negotiated 3, 4 &amp; 5-star rates at beachfront resorts, hilltop cottages, and city-centre hotels with flexible cancellation.</p>
+                <div class="svc-tags">
+                    <span class="tag">Cox's Bazar</span>
+                    <span class="tag">Sajek Cottages</span>
+                    <span class="tag">Global Hotels</span>
+                </div>
+            </div>
+            <div class="service-card reveal reveal-delay-4">
+                <div class="svc-icon"><i class="fa-solid fa-users-rectangle"></i></div>
+                <div class="svc-title">Group &amp; Corporate Tours</div>
+                <p class="svc-desc">Customised team retreats, family reunions &amp; student excursions with private AC coaches, dedicated guides &amp; group pricing.</p>
+                <div class="svc-tags">
+                    <span class="tag">Corporate Trips</span>
+                    <span class="tag">Family Packages</span>
+                    <span class="tag">Custom Plans</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     WHY CHOOSE US
+     ========================================================= -->
+<section class="section" id="why-us">
+    <div class="container">
+        <div class="section-header center reveal">
+            <div class="badge badge-emerald"><i class="fa-solid fa-shield-check"></i> Our Commitment</div>
+            <h2 class="section-title">Why Thousands Choose Cholojai</h2>
+            <p class="section-subtitle">Our edge: real expertise, local knowledge, and a relentless focus on your experience.</p>
+        </div>
+
+        <div class="why-grid">
+            <div class="why-card reveal reveal-delay-1">
+                <div class="why-num">01</div>
+                <div class="why-title">Transparent Pricing</div>
+                <p class="why-desc">No hidden fees. What you see in our estimates is exactly what you pay — with itemised invoices.</p>
+            </div>
+            <div class="why-card reveal reveal-delay-2">
+                <div class="why-num">02</div>
+                <div class="why-title">Express Visa in 3 Days</div>
+                <p class="why-desc">Expedited visa processing backed by 99.4% approval rate across 20+ countries with zero rejection guarantees.</p>
+            </div>
+            <div class="why-card reveal reveal-delay-3">
+                <div class="why-num">03</div>
+                <div class="why-title">24/7 WhatsApp Support</div>
+                <p class="why-desc">A dedicated travel consultant is always reachable on WhatsApp — before, during, and after your trip.</p>
+            </div>
+            <div class="why-card reveal reveal-delay-4">
+                <div class="why-num">04</div>
+                <div class="why-title">15,000+ Happy Travelers</div>
+                <p class="why-desc">A decade of planning unforgettable journeys has earned us Bangladesh's most trusted travel agency reputation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     BUDGET ESTIMATOR
+     ========================================================= -->
+<section class="section section-alt" id="estimator">
+    <div class="container">
+        <div class="section-header center reveal">
+            <div class="badge badge-gold"><i class="fa-solid fa-calculator"></i> Instant Tool</div>
+            <h2 class="section-title">Calculate Your Tour Budget</h2>
+            <p class="section-subtitle">Select your destination &amp; preferences to get an instant cost estimate.</p>
+        </div>
+
+        <div class="estimator-grid glass reveal" style="overflow:hidden;">
+            <!-- Form Side -->
+            <div class="estimator-form">
+                <div class="form-group">
+                    <label class="form-label"><i class="fa-solid fa-location-dot"></i> Select Destination</label>
+                    <select id="calcDest">
+                        <option value="8500"   data-name="Cox's Bazar Beach & St. Martin (3D/2N)" selected>Cox's Bazar &amp; St. Martin — ৳8,500</option>
+                        <option value="6800"   data-name="Sajek Valley & Bandarban Hills (3D/2N)">Sajek Valley &amp; Bandarban — ৳6,800</option>
+                        <option value="28500"  data-name="Kashmir Paradise & Houseboat (5D/4N)">Kashmir Paradise &amp; Houseboat — ৳28,500</option>
+                        <option value="45000"  data-name="Dubai & Abu Dhabi Grand Tour (5D/4N)">Dubai &amp; Abu Dhabi — ৳45,000</option>
+                        <option value="32000"  data-name="Thailand & Phuket Island Tour (5D/4N)">Thailand &amp; Phuket — ৳32,000</option>
+                        <option value="115000" data-name="Executive 5-Star Umrah Package (10 Days)">Executive Umrah Package — ৳1,15,000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label"><i class="fa-solid fa-users"></i> Travelers Count</label>
+                    <select id="calcPax">
+                        <option value="1.0" selected>Solo (1 Person)</option>
+                        <option value="1.9">Couple — 2 Persons (5% off)</option>
+                        <option value="3.6">Family — 4 Persons (10% off)</option>
+                        <option value="5.1">Group — 6+ Persons (15% off)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label"><i class="fa-solid fa-sliders"></i> Add-ons &amp; Upgrades</label>
+                    <div class="addons-grid">
+                        <label class="addon-item active" id="addon-wrap-0">
+                            <input type="checkbox" class="addon-check" value="3500" data-title="Round-trip Flight Upgrade" checked>
+                            <span class="addon-label">✈️ Flight Upgrade +৳3,500</span>
+                        </label>
+                        <label class="addon-item active" id="addon-wrap-1">
+                            <input type="checkbox" class="addon-check" value="2500" data-title="Express Visa Processing" checked>
+                            <span class="addon-label">🛂 Express Visa +৳2,500</span>
+                        </label>
+                        <label class="addon-item" id="addon-wrap-2">
+                            <input type="checkbox" class="addon-check" value="4000" data-title="5-Star Hotel Upgrade">
+                            <span class="addon-label">🏨 5-Star Hotel +৳4,000</span>
+                        </label>
+                        <label class="addon-item" id="addon-wrap-3">
+                            <input type="checkbox" class="addon-check" value="2000" data-title="Private AC Vehicle">
+                            <span class="addon-label">🚐 Private AC Car +৳2,000</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Side -->
+            <div class="summary-card">
+                <div>
+                    <h3 style="font-size:18px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px;">
+                        <i class="fa-solid fa-receipt" style="color:var(--primary)"></i> Package Summary
+                    </h3>
+                    <div class="summary-row">
+                        <span class="label">Destination</span>
+                        <span class="value" id="sumDest">Cox's Bazar &amp; St. Martin</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="label">Add-ons Total</span>
+                        <span class="value" id="sumAddons">৳6,000</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="label">Travelers</span>
+                        <span class="value" id="sumPax">Solo (1 Person)</span>
+                    </div>
+                </div>
+
+                <div class="total-box">
+                    <div class="total-label">Estimated Total</div>
+                    <div class="total-amount" id="totalAmount">৳14,500</div>
+                    <div class="total-note">* Flexible installment plans available</div>
+                </div>
+
+                <button class="btn btn-primary btn-full btn-lg" id="reserveBtn">
+                    <i class="fa-brands fa-whatsapp"></i> Reserve This Tour
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     TESTIMONIALS
+     ========================================================= -->
+<section class="section" id="testimonials">
+    <div class="container">
+        <div class="section-header center reveal">
+            <div class="badge badge-gold"><i class="fa-solid fa-star"></i> Traveler Reviews</div>
+            <h2 class="section-title">What Our Travelers Say</h2>
+            <p class="section-subtitle">Real feedback from families, couples &amp; corporate groups who traveled with Cholojai.</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal reveal-delay-1">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-text">"Cholojai arranged our Sajek Valley family trip perfectly. The cloud cottage, Chander Gari jeep, and sunrise views were absolutely breathtaking!"</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar">TH</div>
+                    <div>
+                        <div class="reviewer-name">Tanvir Hossain</div>
+                        <div class="reviewer-place">Dhaka, Bangladesh</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card reveal reveal-delay-2">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-text">"Got my Thailand tourist visa approved within 3 days — completely hassle-free with excellent WhatsApp communication throughout!"</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar">SK</div>
+                    <div>
+                        <div class="reviewer-name">Sarah Khan</div>
+                        <div class="reviewer-place">Chittagong, Bangladesh</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card reveal reveal-delay-3">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-text">"Our Kashmir trip was magical — Dal Lake houseboat, Gulmarg cable car, Pahalgam valley. Everything was handled flawlessly by Cholojai."</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar">MR</div>
+                    <div>
+                        <div class="reviewer-name">Mahmudur Rahman</div>
+                        <div class="reviewer-place">Sylhet, Bangladesh</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     CONTACT & BOOKING
+     ========================================================= -->
+<section class="section section-alt" id="contact">
+    <div class="container">
+        <div class="contact-grid">
+            <!-- Info Panel -->
+            <div class="contact-info reveal">
+                <div class="badge badge-gold"><i class="fa-solid fa-headset"></i> 24/7 Support</div>
+                <h2 class="contact-heading">Plan Your Dream Vacation Today</h2>
+                <p class="contact-subtext">
+                    Have questions about visa documents, tour customisation, or group pricing? Our travel consultants are always ready to help.
+                </p>
+
+                <div class="contact-items">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-brands fa-whatsapp"></i></div>
                         <div>
-                            <strong style="display:block; font-size: 13px;">Express Visa Processing</strong>
-                            <small style="color: var(--text-muted);">India, Thailand, Dubai, Schengen</small>
+                            <div class="contact-item-title">WhatsApp (24/7)</div>
+                            <div class="contact-item-val">+880 1700-000000</div>
                         </div>
                     </div>
-
-                    <div class="floating-badge floating-badge-2">
-                        <i class="fa-solid fa-hotel" style="color: #6366f1; font-size: 22px;"></i>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
                         <div>
-                            <strong style="display:block; font-size: 13px;">5-Star Resort Deals</strong>
-                            <small style="color: var(--text-muted);">Exclusive Group Discounts</small>
+                            <div class="contact-item-title">Email Address</div>
+                            <div class="contact-item-val">info@cholojaitours.com</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <div class="contact-item-title">Head Office</div>
+                            <div class="contact-item-val">Dhaka, Bangladesh</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div>
+                            <div class="contact-item-title">Office Hours</div>
+                            <div class="contact-item-val">Sat–Thu, 9am – 9pm</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Marquee Banner -->
-    <section class="tech-marquee-section">
-        <div class="marquee-container">
-            <div class="marquee-content">
-                <div class="tech-pill"><i class="fa-solid fa-umbrella-beach"></i> Cox's Bazar & St. Martin</div>
-                <div class="tech-pill"><i class="fa-solid fa-mountain"></i> Sajek Valley & Bandarban</div>
-                <div class="tech-pill"><i class="fa-solid fa-snowflake"></i> Kashmir & Ladakh</div>
-                <div class="tech-pill"><i class="fa-solid fa-city"></i> Dubai & Abu Dhabi</div>
-                <div class="tech-pill"><i class="fa-solid fa-plane"></i> Thailand & Phuket</div>
-                <div class="tech-pill"><i class="fa-solid fa-kaaba"></i> Umrah Executive Packages</div>
-                <div class="tech-pill"><i class="fa-solid fa-passport"></i> Instant Visa Assistance</div>
-            </div>
-            <div class="marquee-content" aria-hidden="true">
-                <div class="tech-pill"><i class="fa-solid fa-umbrella-beach"></i> Cox's Bazar & St. Martin</div>
-                <div class="tech-pill"><i class="fa-solid fa-mountain"></i> Sajek Valley & Bandarban</div>
-                <div class="tech-pill"><i class="fa-solid fa-snowflake"></i> Kashmir & Ladakh</div>
-                <div class="tech-pill"><i class="fa-solid fa-city"></i> Dubai & Abu Dhabi</div>
-                <div class="tech-pill"><i class="fa-solid fa-plane"></i> Thailand & Phuket</div>
-                <div class="tech-pill"><i class="fa-solid fa-kaaba"></i> Umrah Executive Packages</div>
-                <div class="tech-pill"><i class="fa-solid fa-passport"></i> Instant Visa Assistance</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tour Packages & Destinations -->
-    <section class="section" id="packages">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="badge">Handcrafted Journeys</span>
-                <h2>Featured Tour Packages & Destinations</h2>
-                <p>Browse our most popular domestic & international tour packages with all-inclusive deals.</p>
-            </div>
-
-            <!-- Filter Tabs -->
-            <div class="portfolio-filter-tabs">
-                <button class="filter-tab active" data-filter="all">All Packages</button>
-                <button class="filter-tab" data-filter="domestic">Domestic Trips</button>
-                <button class="filter-tab" data-filter="international">International Tours</button>
-                <button class="filter-tab" data-filter="visa">Visa & Umrah</button>
-            </div>
-
-            <!-- Packages Grid -->
-            <div class="projects-grid" id="projectsGrid">
-                <!-- Package 1 -->
-                <div class="project-card glass-card" data-category="domestic">
-                    <div class="project-img-box" style="background-image: linear-gradient(135deg, #0284c7, #0369a1); display:flex; align-items:center; justify-content:center;">
-                        <i class="fa-solid fa-umbrella-beach" style="font-size: 64px; color: #ffffff;"></i>
-                        <span class="project-category-badge">Domestic Bangladesh</span>
-                        <div class="project-overlay">
-                            <button class="btn btn-primary btn-sm view-case-btn" data-project="0">
-                                <i class="fa-solid fa-circle-info"></i> Package Details
-                            </button>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Cox's Bazar & St. Martin Cruise</h3>
-                        <p class="project-desc">3 Days / 2 Nights luxury beach resort stay, complimentary breakfast, island cruise tickets, and guided sightseeing.</p>
-                        <div class="project-footer">
-                            <span class="project-metric"><i class="fa-solid fa-tag"></i> ৳8,500 / Person</span>
-                            <div class="service-tags" style="margin:0;">
-                                <span class="tag">3D/2N</span>
-                                <span class="tag">Beach Resort</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package 2 -->
-                <div class="project-card glass-card" data-category="domestic">
-                    <div class="project-img-box" style="background-image: linear-gradient(135deg, #15803d, #166534); display:flex; align-items:center; justify-content:center;">
-                        <i class="fa-solid fa-mountain-sun" style="font-size: 64px; color: #ffffff;"></i>
-                        <span class="project-category-badge">Domestic Bangladesh</span>
-                        <div class="project-overlay">
-                            <button class="btn btn-primary btn-sm view-case-btn" data-project="1">
-                                <i class="fa-solid fa-circle-info"></i> Package Details
-                            </button>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Sajek Valley & Bandarban Hill Tour</h3>
-                        <p class="project-desc">3 Days / 2 Nights cloud paradise adventure. Stay at hilltop resorts in Konglak & Helipad points with Chander Gari jeep safari.</p>
-                        <div class="project-footer">
-                            <span class="project-metric"><i class="fa-solid fa-tag"></i> ৳6,800 / Person</span>
-                            <div class="service-tags" style="margin:0;">
-                                <span class="tag">3D/2N</span>
-                                <span class="tag">Jeep Safari</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package 3 -->
-                <div class="project-card glass-card" data-category="international">
-                    <div class="project-img-box" style="background-image: linear-gradient(135deg, #4338ca, #3730a3); display:flex; align-items:center; justify-content:center;">
-                        <i class="fa-solid fa-snowflake" style="font-size: 64px; color: #ffffff;"></i>
-                        <span class="project-category-badge">Himalayan Holiday</span>
-                        <div class="project-overlay">
-                            <button class="btn btn-primary btn-sm view-case-btn" data-project="2">
-                                <i class="fa-solid fa-circle-info"></i> Package Details
-                            </button>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Kashmir Paradise & Houseboat Stay</h3>
-                        <p class="project-desc">5 Days / 4 Nights Srinagar Dal Lake Houseboat, Gulmarg Snow Gondola Cable Car, Pahalgam Valley & full Indian tourist visa support.</p>
-                        <div class="project-footer">
-                            <span class="project-metric"><i class="fa-solid fa-tag"></i> ৳28,500 / Person</span>
-                            <div class="service-tags" style="margin:0;">
-                                <span class="tag">5D/4N</span>
-                                <span class="tag">Houseboat</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package 4 -->
-                <div class="project-card glass-card" data-category="international">
-                    <div class="project-img-box" style="background-image: linear-gradient(135deg, #b45309, #92400e); display:flex; align-items:center; justify-content:center;">
-                        <i class="fa-solid fa-city" style="font-size: 64px; color: #ffffff;"></i>
-                        <span class="project-category-badge">Luxury Middle East</span>
-                        <div class="project-overlay">
-                            <button class="btn btn-primary btn-sm view-case-btn" data-project="3">
-                                <i class="fa-solid fa-circle-info"></i> Package Details
-                            </button>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Dubai & Abu Dhabi Grand Tour</h3>
-                        <p class="project-desc">5 Days / 4 Nights 4-Star Hotel stay, Desert Safari with BBQ Dinner, Burj Khalifa 124th floor ticket & Express UAE Visa.</p>
-                        <div class="project-footer">
-                            <span class="project-metric"><i class="fa-solid fa-tag"></i> ৳45,000 / Person</span>
-                            <div class="service-tags" style="margin:0;">
-                                <span class="tag">5D/4N</span>
-                                <span class="tag">Desert Safari</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package 5 -->
-                <div class="project-card glass-card" data-category="international">
-                    <div class="project-img-box" style="background-image: linear-gradient(135deg, #0d9488, #0f766e); display:flex; align-items:center; justify-content:center;">
-                        <i class="fa-solid fa-plane-up" style="font-size: 64px; color: #ffffff;"></i>
-                        <span class="project-category-badge">South East Asia</span>
-                        <div class="project-overlay">
-                            <button class="btn btn-primary btn-sm view-case-btn" data-project="4">
-                                <i class="fa-solid fa-circle-info"></i> Package Details
-                            </button>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Thailand & Phuket Island Gateway</h3>
-                        <p class="project-desc">5 Days / 4 Nights Bangkok city tour, Phi Phi Island speedboat tour with buffet lunch, and Thailand Tourist Visa processing.</p>
-                        <div class="project-footer">
-                            <span class="project-metric"><i class="fa-solid fa-tag"></i> ৳32,000 / Person</span>
-                            <div class="service-tags" style="margin:0;">
-                                <span class="tag">5D/4N</span>
-                                <span class="tag">Island Tour</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package 6 -->
-                <div class="project-card glass-card" data-category="visa">
-                    <div class="project-img-box" style="background-image: linear-gradient(135deg, #854d0e, #713f12); display:flex; align-items:center; justify-content:center;">
-                        <i class="fa-solid fa-kaaba" style="font-size: 64px; color: #ffffff;"></i>
-                        <span class="project-category-badge">Religious Pilgrimage</span>
-                        <div class="project-overlay">
-                            <button class="btn btn-primary btn-sm view-case-btn" data-project="5">
-                                <i class="fa-solid fa-circle-info"></i> Package Details
-                            </button>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Executive Umrah & Pilgrimage Package</h3>
-                        <p class="project-desc">10 Days Makkah & Madinah 5-Star Hotel near Haram, Express Umrah Visa, round-trip flights, and private Ziyarat transport.</p>
-                        <div class="project-footer">
-                            <span class="project-metric"><i class="fa-solid fa-tag"></i> ৳1,15,000 / Person</span>
-                            <div class="service-tags" style="margin:0;">
-                                <span class="tag">10 Days</span>
-                                <span class="tag">5-Star Haram</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services & Visa Assistance Section -->
-    <section class="section" id="visa" style="background: rgba(15, 23, 42, 0.4);">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="badge">Comprehensive Travel Solutions</span>
-                <h2>Visa Processing, Flights & Custom Services</h2>
-                <p>We take care of all paperwork, bookings, and logistics so you enjoy a stress-free journey.</p>
-            </div>
-
-            <div class="services-grid">
-                <!-- Service 1 -->
-                <div class="service-card glass-panel">
-                    <div class="service-icon"><i class="fa-solid fa-passport"></i></div>
-                    <h3>Tourist & Work Visa Processing</h3>
-                    <p>Hassle-free document preparation and embassy submission for India, Thailand, Dubai, Malaysia, Singapore, UK, USA & Schengen.</p>
-                    <div class="service-tags">
-                        <span class="tag">India IVAC</span>
-                        <span class="tag">Thailand E-Visa</span>
-                        <span class="tag">Dubai 30/60 Days</span>
-                    </div>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="service-card glass-panel">
-                    <div class="service-icon"><i class="fa-solid fa-plane-departure"></i></div>
-                    <h3>Air Ticket Reservation</h3>
-                    <p>Instant domestic and international flight tickets with discounted corporate rates across Biman, US-Bangla, AirAsia, Emirates & Qatar Airways.</p>
-                    <div class="service-tags">
-                        <span class="tag">Domestic Flights</span>
-                        <span class="tag">International Airfare</span>
-                        <span class="tag">Date Changes</span>
-                    </div>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="service-card glass-panel">
-                    <div class="service-icon"><i class="fa-solid fa-hotel"></i></div>
-                    <h3>Hotel & Resort Bookings</h3>
-                    <p>Pre-booked 3, 4, and 5-star beachfront resorts, mountain view cottages, and city center hotels with flexible cancellation policies.</p>
-                    <div class="service-tags">
-                        <span class="tag">Cox's Bazar Resorts</span>
-                        <span class="tag">Sajek Hill Cottages</span>
-                        <span class="tag">Global 5-Star Hotels</span>
-                    </div>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="service-card glass-panel">
-                    <div class="service-icon"><i class="fa-solid fa-users"></i></div>
-                    <h3>Corporate & Group Packages</h3>
-                    <p>Customized corporate team-building retreats, family reunion tours, and student group excursions tailored to your exact budget.</p>
-                    <div class="service-tags">
-                        <span class="tag">Corporate Retreats</span>
-                        <span class="tag">Private AC Buses</span>
-                        <span class="tag">Custom Itineraries</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tour Budget Estimator -->
-    <section class="section" id="estimator">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="badge">Instant Tool</span>
-                <h2>Interactive Tour Budget Estimator</h2>
-                <p>Select your destination, hotel class, and travelers count to receive an immediate cost estimate.</p>
-            </div>
-
-            <div class="calculator-box glass-panel">
-                <div class="calc-grid">
-                    <div class="calc-inputs">
+            <!-- Booking Form -->
+            <div class="glass contact-form-card reveal reveal-delay-2">
+                <h3 class="form-title"><i class="fa-solid fa-paper-plane"></i> Send Booking Inquiry</h3>
+                <form id="contactForm" autocomplete="off">
+                    <div class="form-row">
                         <div class="form-group">
-                            <label><i class="fa-solid fa-location-dot"></i> Select Destination</label>
-                            <select id="calcProjectType">
-                                <option value="8500" data-name="Cox's Bazar Beach Resort (3D/2N)" selected>Cox's Bazar Beach & Island (৳8,500)</option>
-                                <option value="6800" data-name="Sajek Valley & Bandarban (3D/2N)">Sajek Valley & Bandarban Hill Tour (৳6,800)</option>
-                                <option value="28500" data-name="Kashmir Paradise & Houseboat (5D/4N)">Kashmir Paradise & Houseboat (৳28,500)</option>
-                                <option value="45000" data-name="Dubai & Abu Dhabi Grand Tour (5D/4N)">Dubai & Abu Dhabi Tour (৳45,000)</option>
-                                <option value="32000" data-name="Thailand & Phuket Explorer (5D/4N)">Thailand & Phuket Island Tour (৳32,000)</option>
-                                <option value="115000" data-name="Executive Umrah Package (10 Days)">Executive 5-Star Umrah Package (৳1,15,000)</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-users"></i> Travelers Count</label>
-                            <select id="calcTimeline">
-                                <option value="1.0" selected>Solo Traveler (1 Person)</option>
-                                <option value="1.9">Couple / 2 Persons [5% Discount]</option>
-                                <option value="3.6">Family / 4 Persons [10% Discount]</option>
-                                <option value="5.1">Group / 6+ Persons [15% Group Discount]</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-sliders"></i> Optional Add-ons & Upgrades</label>
-                            <div class="checkbox-grid">
-                                <label class="check-card active">
-                                    <input type="checkbox" class="addon-check" value="3500" data-title="Round-trip Flight Ticket Upgrade" checked>
-                                    <span>Air Ticket Upgrade (+৳3,500)</span>
-                                </label>
-                                <label class="check-card active">
-                                    <input type="checkbox" class="addon-check" value="2500" data-title="Express Visa Processing" checked>
-                                    <span>Express Visa Processing (+৳2,500)</span>
-                                </label>
-                                <label class="check-card">
-                                    <input type="checkbox" class="addon-check" value="4000" data-title="5-Star Hotel Upgrade">
-                                    <span>5-Star Hotel Upgrade (+৳4,000)</span>
-                                </label>
-                                <label class="check-card">
-                                    <input type="checkbox" class="addon-check" value="2000" data-title="Private AC Vehicle Sightseeing">
-                                    <span>Private AC Vehicle (+৳2,000)</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="calc-summary-card">
-                        <div>
-                            <h3 style="margin-bottom: 20px;"><i class="fa-solid fa-receipt"></i> Package & Budget Summary</h3>
-                            <div class="summary-line">
-                                <span>Destination:</span>
-                                <strong id="summaryBaseName">Cox's Bazar Beach & Island</strong>
-                            </div>
-                            <div class="summary-line">
-                                <span>Add-ons Total:</span>
-                                <strong id="summaryAddonsPrice">৳6,000</strong>
-                            </div>
-                            <div class="summary-line">
-                                <span>Travelers Group:</span>
-                                <strong id="summaryTimelineName">Solo Traveler</strong>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="total-estimate-box">
-                                <p style="font-size: 13px; color: var(--text-muted);">Estimated Total Package Cost</p>
-                                <div class="total-price" id="calcTotalPrice">৳14,500</div>
-                                <small style="color: var(--text-muted);">* Flexible installment plans available</small>
-                            </div>
-
-                            <button class="btn btn-primary btn-block btn-lg" id="lockEstimateBtn">
-                                <i class="fa-brands fa-whatsapp"></i> Reserve This Tour Package
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Client Testimonials -->
-    <section class="section" id="testimonials" style="background: rgba(15, 23, 42, 0.4);">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="badge">Traveler Feedback</span>
-                <h2>What Our Travelers Say About Cholojai</h2>
-                <p>Hear from families, couples, and corporate groups who traveled with us.</p>
-            </div>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card glass-panel">
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Cholojai Tours arranged our Sajek Valley trip perfectly. The hilltop resort view and private Chander Gari jeep were top-notch!"</p>
-                    <div class="client-info">
-                        <div class="client-avatar">TH</div>
-                        <div>
-                            <strong style="display:block;">Tanvir Hossain</strong>
-                            <small style="color: var(--text-muted);">Dhaka, Bangladesh</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card glass-panel">
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Got my Thailand tourist visa processed within 3 days without any hassle. Extremely fast communication over WhatsApp."</p>
-                    <div class="client-info">
-                        <div class="client-avatar">SK</div>
-                        <div>
-                            <strong style="display:block;">Sarah Khan</strong>
-                            <small style="color: var(--text-muted);">Chittagong, Bangladesh</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card glass-panel">
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Our Kashmir family trip was unforgettable! Dal Lake Houseboat stay and Gulmarg cable car ticket booking were handled seamlessly."</p>
-                    <div class="client-info">
-                        <div class="client-avatar">MR</div>
-                        <div>
-                            <strong style="display:block;">Mahmudur Rahman</strong>
-                            <small style="color: var(--text-muted);">Sylhet, Bangladesh</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact & Booking Form -->
-    <section class="section" id="contact">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info-panel">
-                    <span class="badge">Let's Connect</span>
-                    <h2>Plan Your Next Dream Vacation</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 24px;">
-                        Have questions about visa documents, tour customization, or group pricing? Contact our dedicated travel consultants directly.
-                    </p>
-
-                    <div class="contact-info-list">
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
-                            <div>
-                                <strong style="display:block;">Official WhatsApp</strong>
-                                <span style="color: var(--text-muted);">+880 1700-000000</span>
-                            </div>
-                        </div>
-
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
-                            <div>
-                                <strong style="display:block;">Email Address</strong>
-                                <span style="color: var(--text-muted);">info@cholojaitours.com</span>
-                            </div>
-                        </div>
-
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
-                            <div>
-                                <strong style="display:block;">Office Location</strong>
-                                <span style="color: var(--text-muted);">Dhaka, Bangladesh</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form-panel glass-panel" style="padding: 36px;">
-                    <h3 style="margin-bottom: 20px;"><i class="fa-solid fa-paper-plane"></i> Request Tour Booking / Inquiry</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label>Your Full Name *</label>
+                            <label class="form-label">Full Name *</label>
                             <input type="text" id="contactName" class="form-control" placeholder="e.g. Pranto Sarker" required>
                         </div>
-
                         <div class="form-group">
-                            <label>Mobile Number or WhatsApp *</label>
-                            <input type="text" id="contactContact" class="form-control" placeholder="+880 1712-345678" required>
+                            <label class="form-label">Mobile / WhatsApp *</label>
+                            <input type="tel" id="contactContact" class="form-control" placeholder="+880 17XX-XXXXXX" required>
                         </div>
-
-                        <div class="form-group">
-                            <label>Desired Destination / Package Scope</label>
-                            <input type="text" id="contactScope" class="form-control" placeholder="e.g. Cox's Bazar 3D/2N or Thailand Visa">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Travel Dates & Special Requirements</label>
-                            <textarea id="contactDetails" rows="4" class="form-control" placeholder="Mention preferred travel dates, total travelers, or specific hotel preferences..."></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary btn-block btn-lg">
-                            <i class="fa-brands fa-whatsapp"></i> Submit Booking & Open WhatsApp
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container flex-between">
-            <div>
-                <p><strong>Cholojai Tours & Travels Ltd.</strong></p>
-                <p>&copy; 2026 Cholojai Tours. All rights reserved.</p>
-            </div>
-            <div style="display:flex; gap: 16px;">
-                <button class="btn btn-secondary btn-sm" id="footerAdminBtn"><i class="fa-solid fa-shield"></i> Admin Leads</button>
-                <a href="#hero" class="btn btn-secondary btn-sm"><i class="fa-solid fa-arrow-up"></i> Top</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Inquiries Management Modal (Admin Dashboard) -->
-    <div class="modal" id="adminModal">
-        <div class="modal-content glass-panel">
-            <div class="modal-header">
-                <h3><i class="fa-solid fa-clipboard-list"></i> Cholojai Traveler Inquiries & Booking Leads</h3>
-                <button class="close-modal" id="closeAdminBtn">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p style="color: var(--text-muted); margin-bottom: 16px;">Captured traveler inquiries and tour estimates stored in local database state.</p>
-                <div class="table-responsive">
-                    <table class="leads-table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Traveler Name</th>
-                                <th>Contact</th>
-                                <th>Destination</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="inquiriesTableBody">
-                            <!-- Injected via JS -->
-                        </tbody>
-                    </table>
-                </div>
-                <div id="noInquiriesMsg" class="text-center" style="padding: 30px;">
-                    <i class="fa-solid fa-inbox fa-3x" style="color: var(--text-muted); margin-bottom: 10px;"></i>
-                    <p style="color: var(--text-muted);">No tour inquiries captured yet.</p>
-                </div>
-            </div>
-            <div class="modal-footer flex-between" style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-color);">
-                <button class="btn btn-danger btn-sm" id="clearInquiriesBtn"><i class="fa-solid fa-trash"></i> Clear All</button>
-                <button class="btn btn-secondary btn-sm" id="exportInquiriesBtn"><i class="fa-solid fa-download"></i> Export as Text</button>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Destination / Package</label>
+                        <input type="text" id="contactScope" class="form-control" placeholder="e.g. Cox's Bazar 3D/2N or Kashmir Houseboat">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Travel Dates &amp; Requirements</label>
+                        <textarea id="contactDetails" rows="4" class="form-control" placeholder="Preferred dates, number of travelers, hotel preference…"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full btn-lg">
+                        <i class="fa-brands fa-whatsapp"></i> Submit &amp; Open WhatsApp
+                    </button>
+                </form>
             </div>
         </div>
     </div>
+</section>
 
-    <!-- Package Details Modal -->
-    <div class="modal" id="caseStudyModal">
-        <div class="modal-content glass-panel">
-            <div class="modal-header">
-                <h3 id="caseModalTitle"><i class="fa-solid fa-circle-info"></i> Package Details</h3>
-                <button class="close-modal" id="closeCaseModalBtn">&times;</button>
-            </div>
-            <div class="modal-body" id="caseModalBody">
-                <!-- Injected via JS -->
-            </div>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer class="footer">
+    <div class="container footer-inner">
+        <div>
+            <div class="footer-brand">Cholojai Tours &amp; Travels Ltd.</div>
+            <div class="footer-copy">&copy; 2026 Cholojai Tours. All rights reserved.</div>
+        </div>
+        <div class="footer-actions">
+            <button class="btn btn-ghost btn-sm" id="footerAdminBtn"><i class="fa-solid fa-shield-halved"></i> Admin</button>
+            <a href="#hero" class="btn btn-ghost btn-sm"><i class="fa-solid fa-arrow-up"></i> Top</a>
         </div>
     </div>
+</footer>
 
-    <!-- Notification Toast -->
-    <div class="toast" id="toast"></div>
 
-    <script src="app.js"></script>
+<!-- =========================================================
+     ADMIN LEADS MODAL
+     ========================================================= -->
+<div class="modal" id="adminModal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+        <div class="modal-head">
+            <h3><i class="fa-solid fa-clipboard-list" style="color:var(--primary)"></i> Traveler Leads &amp; Inquiries</h3>
+            <button class="close-btn" id="closeAdminBtn" aria-label="Close">&times;</button>
+        </div>
+        <p style="font-size:13px;color:var(--text-sub);margin-bottom:18px;">Captured booking inquiries stored locally in your browser.</p>
+        <div style="overflow-x:auto;">
+            <table class="data-table" id="leadsTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Destination</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="leadsBody"></tbody>
+            </table>
+        </div>
+        <div id="noLeadsMsg" class="text-center" style="padding:40px;display:none;">
+            <i class="fa-solid fa-inbox" style="font-size:36px;color:var(--text-dim);margin-bottom:10px;display:block;"></i>
+            <p style="color:var(--text-sub);">No inquiries yet.</p>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
+            <button class="btn btn-danger btn-sm" id="clearLeadsBtn"><i class="fa-solid fa-trash"></i> Clear All</button>
+            <button class="btn btn-ghost btn-sm" id="exportLeadsBtn"><i class="fa-solid fa-download"></i> Export TXT</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- =========================================================
+     PACKAGE DETAIL MODAL
+     ========================================================= -->
+<div class="modal" id="pkgModal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+        <div class="modal-head">
+            <h3 id="pkgModalTitle"><i class="fa-solid fa-plane" style="color:var(--primary)"></i> Package Details</h3>
+            <button class="close-btn" id="closePkgModal" aria-label="Close">&times;</button>
+        </div>
+        <div id="pkgModalBody"></div>
+    </div>
+</div>
+
+
+<!-- Toast -->
+<div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+<script src="app.js"></script>
 </body>
 </html>
