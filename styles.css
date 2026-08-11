@@ -100,6 +100,9 @@ body.light{
   display:flex;align-items:center;justify-content:space-between;height:70px;gap:20px;
 }
 .logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand-logo-img{height:46px;width:auto;object-fit:contain;border-radius:6px;background:#fff;padding:4px 8px;box-shadow:var(--shg);transition:var(--ease)}
+.brand-logo-img:hover{transform:scale(1.03)}
+.brand-logo-img.sm{height:36px;padding:3px 6px}
 .logo-mark{
   width:40px;height:40px;border-radius:var(--r);flex-shrink:0;
   background:linear-gradient(135deg,var(--gold),var(--gold-dark));

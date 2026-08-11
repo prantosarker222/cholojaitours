@@ -1,0 +1,8 @@
+.git
+.cache
+.config
+.npm
+.local
+__pycache__
+Downloads
+apex_studio_complete_project.zip
