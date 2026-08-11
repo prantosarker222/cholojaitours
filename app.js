@@ -309,47 +309,6 @@
   // Close pkg modal
   $('#closePkg')?.addEventListener('click', () => closeModal('pkgModal'));
 
-  // ── Budget Estimator ───────────────────────────────────────
-  const estDest = $('#estDest'), estPax = $('#estPax');
-  const addonChks = $$('.addon-chk');
-
-  function calcBudget() {
-    if (!estDest || !estPax) return;
-    const base = parseInt(estDest.value) || 0;
-    const pax  = parseFloat(estPax.value) || 1;
-    const destName = (estDest.options[estDest.selectedIndex]?.dataset.name || '').split('(')[0].trim();
-    const paxName  = (estPax.options[estPax.selectedIndex]?.text || '').split('[')[0].trim();
-
-    let addons = 0;
-    addonChks.forEach((chk, i) => {
-      const wrap = document.getElementById(`a${i}`);
-      if (chk.checked) { addons += parseInt(chk.value)||0; wrap?.classList.add('active'); }
-      else wrap?.classList.remove('active');
-    });
-
-    const total = Math.round((base + addons) * pax);
-    const sd = $('#sumDest'),  sa = $('#sumAddons'), sp = $('#sumPax'), et = $('#estTotal');
-    if (sd) sd.textContent = destName;
-    if (sa) sa.textContent = fmtBDT(addons);
-    if (sp) sp.textContent = paxName;
-    if (et) et.textContent = fmtBDT(total);
-  }
-  estDest?.addEventListener('change', calcBudget);
-  estPax?.addEventListener('change', calcBudget);
-  addonChks.forEach(c => c.addEventListener('change', calcBudget));
-  calcBudget();
-
-  $('#reserveBtn')?.addEventListener('click', () => {
-    const destName = (estDest?.options[estDest.selectedIndex]?.dataset.name || 'Tour Package').split('(')[0].trim();
-    const paxTxt = (estPax?.options[estPax.selectedIndex]?.text || 'Solo').split('[')[0].trim();
-    const sc = $('#cScope');
-    const cd = $('#cDetails');
-    if (sc) sc.value = `${destName} (Custom Quote for ${paxTxt})`;
-    if (cd) cd.value = `Hi Cholojai Tours! Please provide a custom price quote for ${destName} (${paxTxt}).`;
-    document.getElementById('contact')?.scrollIntoView({behavior:'smooth'});
-    toast('✅ Custom quote request added to form!');
-  });
-
   // ── Contact Form ───────────────────────────────────────────
   $('#contactForm')?.addEventListener('submit', e => {
     e.preventDefault();

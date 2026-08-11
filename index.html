@@ -12,7 +12,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -42,7 +42,6 @@
       <a href="#corporate">Corporate</a>
       <a href="#services">Services</a>
       <a href="#why-us">Why Us</a>
-      <a href="#estimator">Cost Calc</a>
       <a href="#testimonials">Reviews</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -61,7 +60,6 @@
     <a href="#corporate" class="drawer-link">Corporate Tours</a>
     <a href="#services" class="drawer-link">Visa &amp; Flights</a>
     <a href="#why-us" class="drawer-link">Why Choose Us</a>
-    <a href="#estimator" class="drawer-link">Budget Calculator</a>
     <a href="#testimonials" class="drawer-link">Reviews</a>
     <a href="#contact" class="drawer-link cta-btn" style="text-align:center;margin-top:8px;">Book a Tour</a>
   </nav>
@@ -636,71 +634,7 @@
 </section>
 
 
-<!-- ═══════════════════════════════════════════════════════
-     ESTIMATOR
-════════════════════════════════════════════════════════════ -->
-<section class="section bg-layer" id="estimator">
-  <div class="container">
-    <div class="sec-head center fade-up">
-      <div class="pill-badge">🧮 Instant Tool</div>
-      <h2>Calculate Your Tour Budget</h2>
-      <p>Select your destination and preferences — get a live estimate in seconds.</p>
-    </div>
 
-    <div class="estimator-wrap fade-up">
-      <!-- Inputs -->
-      <div class="est-form">
-        <div class="fgroup">
-          <label><i class="fa-solid fa-location-dot"></i> Destination</label>
-          <select id="estDest">
-            <option value="8500"   data-name="Cox's Bazar & St. Martin (3D/2N)" selected>Cox's Bazar &amp; St. Martin — ৳8,500</option>
-            <option value="6800"   data-name="Sajek Valley & Bandarban (3D/2N)">Sajek Valley &amp; Bandarban — ৳6,800</option>
-            <option value="28500"  data-name="Kashmir Paradise & Houseboat (5D/4N)">Kashmir Paradise &amp; Houseboat — ৳28,500</option>
-            <option value="45000"  data-name="Dubai & Abu Dhabi Tour (5D/4N)">Dubai &amp; Abu Dhabi — ৳45,000</option>
-            <option value="32000"  data-name="Thailand & Phuket Island (5D/4N)">Thailand &amp; Phuket — ৳32,000</option>
-            <option value="115000" data-name="Executive 5-Star Umrah (10 Days)">Executive Umrah Package — ৳1,15,000</option>
-          </select>
-        </div>
-        <div class="fgroup">
-          <label><i class="fa-solid fa-users"></i> Number of Travelers</label>
-          <select id="estPax">
-            <option value="1.00" selected>Solo — 1 Person</option>
-            <option value="1.90">Couple — 2 Persons (5% off)</option>
-            <option value="3.60">Family — 4 Persons (10% off)</option>
-            <option value="5.10">Group — 6+ Persons (15% off)</option>
-          </select>
-        </div>
-        <div class="fgroup">
-          <label><i class="fa-solid fa-plus-circle"></i> Optional Add-ons</label>
-          <div class="addon-grid">
-            <label class="addon active" id="a0"><input type="checkbox" class="addon-chk" value="3500" data-name="Flight Upgrade" checked> ✈️ Flight Upgrade +৳3,500</label>
-            <label class="addon active" id="a1"><input type="checkbox" class="addon-chk" value="2500" data-name="Express Visa" checked> 🛂 Express Visa +৳2,500</label>
-            <label class="addon"        id="a2"><input type="checkbox" class="addon-chk" value="4000" data-name="5-Star Hotel"> 🏨 5-Star Hotel +৳4,000</label>
-            <label class="addon"        id="a3"><input type="checkbox" class="addon-chk" value="2000" data-name="Private Vehicle"> 🚐 Private Car +৳2,000</label>
-          </div>
-        </div>
-      </div>
-
-      <!-- Summary -->
-      <div class="est-summary">
-        <h3><i class="fa-solid fa-receipt" style="color:var(--gold)"></i> Cost Summary</h3>
-        <div class="sum-rows">
-          <div class="sum-row"><span>Destination</span><strong id="sumDest">Cox's Bazar &amp; St. Martin</strong></div>
-          <div class="sum-row"><span>Add-ons</span><strong id="sumAddons">Customized</strong></div>
-          <div class="sum-row"><span>Travelers</span><strong id="sumPax">Solo — 1 Person</strong></div>
-        </div>
-        <div class="total-block">
-          <div class="total-tag">Rate Quote</div>
-          <div class="total-num" id="estTotal">Ask on WhatsApp</div>
-          <div class="total-note">* Instant custom quote tailored for your dates</div>
-        </div>
-        <button class="cta-btn full lg" id="reserveBtn">
-          <i class="fa-brands fa-whatsapp"></i> Get Custom Quote on WhatsApp
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <!-- ═══════════════════════════════════════════════════════
@@ -767,8 +701,8 @@
             <div><span>Office Address</span><strong>House No# 390 (3rd Floor), Road No# 29, DOHS, Mohakhali, Dhaka - 1206</strong></div>
           </div>
           <div class="cinfo-item">
-            <div class="cinfo-icon"><i class="fa-solid fa-globe"></i></div>
-            <div><span>Official Website</span><strong>www.cholojaitour.com</strong></div>
+            <div class="cinfo-icon"><i class="fa-brands fa-facebook"></i></div>
+            <div><span>Facebook Page</span><strong><a href="https://facebook.com/cholojaitours" target="_blank" style="color:var(--gold);text-decoration:underline;">facebook.com/cholojaitours</a></strong></div>
           </div>
           <div class="cinfo-item">
             <div class="cinfo-icon"><i class="fa-solid fa-clock"></i></div>
