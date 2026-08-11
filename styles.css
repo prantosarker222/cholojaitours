@@ -4,12 +4,20 @@
 
 /* ── Variables ─────────────────────────────────── */
 :root {
-  --gold:        #f59e0b;
-  --gold-dark:   #d97706;
-  --gold-glow:   rgba(245,158,11,.22);
-  --gold-soft:   rgba(245,158,11,.10);
-  --cyan:        #06b6d4;
-  --emerald:     #10b981;
+  --teal:        #007a8c;
+  --teal-dark:   #005a68;
+  --teal-glow:   rgba(0,122,140,.25);
+  --teal-soft:   rgba(0,122,140,.12);
+  
+  --gold:        #00a3b8;
+  --gold-dark:   #007a8c;
+  --gold-glow:   rgba(0,163,184,.28);
+  --gold-soft:   rgba(0,163,184,.12);
+  
+  --brand-lime:  #8ec63f;
+  --brand-orange:#f37023;
+  --cyan:        #8ec63f;
+  --emerald:     #8ec63f;
   --rose:        #f43f5e;
 
   --bg:          #060c14;
@@ -22,7 +30,7 @@
   --txt3:        #475569;
 
   --border:      rgba(255,255,255,.07);
-  --border-gold: rgba(245,158,11,.28);
+  --border-gold: rgba(0,163,184,.28);
 
   --r:   10px;
   --r2:  16px;
@@ -30,7 +38,7 @@
   --rf:  9999px;
 
   --sh:  0 20px 60px rgba(0,0,0,.65);
-  --shg: 0 0 32px rgba(245,158,11,.18);
+  --shg: 0 0 32px rgba(0,163,184,.18);
 
   --ease:   all .3s cubic-bezier(.4,0,.2,1);
   --spring: all .45s cubic-bezier(.34,1.56,.64,1);
@@ -100,9 +108,9 @@ body.light{
   display:flex;align-items:center;justify-content:space-between;height:70px;gap:20px;
 }
 .logo{display:flex;align-items:center;gap:11px;text-decoration:none}
-.brand-logo-img{height:46px;width:auto;object-fit:contain;border-radius:6px;background:#fff;padding:4px 8px;box-shadow:var(--shg);transition:var(--ease)}
-.brand-logo-img:hover{transform:scale(1.03)}
-.brand-logo-img.sm{height:36px;padding:3px 6px}
+.brand-logo-img{height:48px;width:auto;object-fit:contain;background:transparent;padding:0;filter:drop-shadow(0 2px 8px rgba(0,163,184,.25));transition:var(--ease)}
+.brand-logo-img:hover{transform:scale(1.04)}
+.brand-logo-img.sm{height:38px;padding:0}
 .logo-mark{
   width:40px;height:40px;border-radius:var(--r);flex-shrink:0;
   background:linear-gradient(135deg,var(--gold),var(--gold-dark));
