@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Studio | Full-Stack Web Development, AI Solutions & UI/UX Design</title>
+    <meta name="description" content="Apex Digital Studio - High-performance Web App Development, AI Workflows & UI/UX Design services. Transform your vision into high-converting digital products.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="container flex-between">
+            <a href="#" class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-code"></i></div>
+                <span>Apex<span class="gradient-text">Studio</span></span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#portfolio">Featured Work</a>
+                <a href="#estimator">Cost Calculator</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Light/Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="btn btn-secondary btn-sm" id="openAdminBtn">
+                    <i class="fa-solid fa-folder-closed"></i> Inquiries (<span id="inquiryBadge">0</span>)
+                </button>
+                <a href="#contact" class="btn btn-primary btn-sm">
+                    <i class="fa-solid fa-paper-plane"></i> Start Project
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-glow-1"></div>
+        <div class="hero-glow-2"></div>
+
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="badge badge-emerald">
+                    <i class="fa-solid fa-circle" style="font-size: 8px;"></i> Available for New Projects & Contracts
+                </div>
+
+                <h1 class="hero-title">
+                    We Build <span class="gradient-text">High-Impact</span> Web Apps & AI-Powered Products
+                </h1>
+
+                <p class="hero-subtitle">
+                    Transforming ideas into fast, scalable, and beautifully designed web applications. Specializing in React, Next.js, Node.js, AI workflows, and modern UI/UX design systems.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#estimator" class="btn btn-primary btn-lg">
+                        <i class="fa-solid fa-calculator"></i> Calculate Project Cost
+                    </a>
+                    <a href="#portfolio" class="btn btn-secondary btn-lg">
+                        <i class="fa-solid fa-eye"></i> View Portfolio
+                    </a>
+                </div>
+
+                <div class="hero-stats-grid">
+                    <div class="stat-item">
+                        <h3 class="gradient-text">50+</h3>
+                        <p>Projects Delivered</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="gradient-text">99.8%</h3>
+                        <p>Client Satisfaction</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="gradient-text">5+ Yrs</h3>
+                        <p>Engineering Mastery</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="profile-card-frame">
+                    <div class="profile-avatar-box">
+                        <div class="avatar-graphic">
+                            <i class="fa-solid fa-terminal"></i>
+                        </div>
+                    </div>
+
+                    <div class="floating-badge floating-badge-1">
+                        <i class="fa-solid fa-rocket" style="color: #06b6d4; font-size: 20px;"></i>
+                        <div>
+                            <strong style="display:block; font-size: 13px;">Ultra-Fast Performance</strong>
+                            <small style="color: var(--text-muted);">Sub-second load times</small>
+                        </div>
+                    </div>
+
+                    <div class="floating-badge floating-badge-2">
+                        <i class="fa-solid fa-brain" style="color: #6366f1; font-size: 20px;"></i>
+                        <div>
+                            <strong style="display:block; font-size: 13px;">AI Workflow Integration</strong>
+                            <small style="color: var(--text-muted);">Smart automation</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Marquee -->
+    <section class="tech-marquee-section">
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <div class="tech-pill"><i class="fa-brands fa-react"></i> React.js</div>
+                <div class="tech-pill"><i class="fa-brands fa-node-js"></i> Node.js</div>
+                <div class="tech-pill"><i class="fa-brands fa-python"></i> Python</div>
+                <div class="tech-pill"><i class="fa-solid fa-layer-group"></i> Next.js</div>
+                <div class="tech-pill"><i class="fa-solid fa-database"></i> PostgreSQL</div>
+                <div class="tech-pill"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Integration</div>
+                <div class="tech-pill"><i class="fa-brands fa-figma"></i> Figma UI/UX</div>
+                <div class="tech-pill"><i class="fa-brands fa-aws"></i> Cloud Architecture</div>
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                <div class="tech-pill"><i class="fa-brands fa-react"></i> React.js</div>
+                <div class="tech-pill"><i class="fa-brands fa-node-js"></i> Node.js</div>
+                <div class="tech-pill"><i class="fa-brands fa-python"></i> Python</div>
+                <div class="tech-pill"><i class="fa-solid fa-layer-group"></i> Next.js</div>
+                <div class="tech-pill"><i class="fa-solid fa-database"></i> PostgreSQL</div>
+                <div class="tech-pill"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Integration</div>
+                <div class="tech-pill"><i class="fa-brands fa-figma"></i> Figma UI/UX</div>
+                <div class="tech-pill"><i class="fa-brands fa-aws"></i> Cloud Architecture</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agency Services -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="badge">Capabilities & Services</span>
+                <h2>End-to-End Digital Engineering</h2>
+                <p>From initial prototype to enterprise deployment, we engineer modern software built for scale.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card glass-panel">
+                    <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3>Full-Stack Web Apps</h3>
+                    <p>Custom web applications built with modern frontend frameworks and robust backend microservices.</p>
+                    <div class="service-tags">
+                        <span class="tag">React / Next.js</span>
+                        <span class="tag">Node.js / Express</span>
+                        <span class="tag">REST & GraphQL</span>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card glass-panel">
+                    <div class="service-icon"><i class="fa-solid fa-robot"></i></div>
+                    <h3>AI & Automation Bots</h3>
+                    <p>Custom LLM integrations, intelligent lead scoring, automated scraping pipelines, and AI agent workflows.</p>
+                    <div class="service-tags">
+                        <span class="tag">OpenAI / Claude API</span>
+                        <span class="tag">Python Scraplers</span>
+                        <span class="tag">Automated Workflows</span>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card glass-panel">
+                    <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
+                    <h3>UI/UX & Design Systems</h3>
+                    <p>Pixel-perfect user interfaces, interactive component libraries, glassmorphism aesthetics, and user flows.</p>
+                    <div class="service-tags">
+                        <span class="tag">Figma Prototypes</span>
+                        <span class="tag">Design Tokens</span>
+                        <span class="tag">Responsive UI</span>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card glass-panel">
+                    <div class="service-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                    <h3>SEO & Speed Optimization</h3>
+                    <p>Sub-second page speeds, Google Core Web Vitals compliance, search engine architecture, and conversion optimization.</p>
+                    <div class="service-tags">
+                        <span class="tag">Lighthouse 99+</span>
+                        <span class="tag">Semantic HTML5</span>
+                        <span class="tag">Vercel & Cloudflare</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Portfolio Projects -->
+    <section class="section" id="portfolio" style="background: rgba(15, 23, 42, 0.4);">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="badge">Selected Work</span>
+                <h2>Featured Projects & Case Studies</h2>
+                <p>Explore real-world web applications and SaaS platforms built with high performance standards.</p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="portfolio-filter-tabs">
+                <button class="filter-tab active" data-filter="all">All Projects</button>
+                <button class="filter-tab" data-filter="webapp">Web Apps & SaaS</button>
+                <button class="filter-tab" data-filter="ai">AI & Automation</button>
+                <button class="filter-tab" data-filter="uiux">UI/UX Design</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Project 1 -->
+                <div class="project-card glass-card" data-category="webapp">
+                    <div class="project-img-box" style="background-image: linear-gradient(135deg, #0f172a, #1e293b); display:flex; align-items:center; justify-content:center;">
+                        <i class="fa-solid fa-plane-departure" style="font-size: 64px; color: var(--primary);"></i>
+                        <span class="project-category-badge">Travel & Booking</span>
+                        <div class="project-overlay">
+                            <button class="btn btn-primary btn-sm view-case-btn" data-project="0">
+                                <i class="fa-solid fa-expand"></i> View Case Study
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Cholojai Travel & Visa Platform</h3>
+                        <p class="project-desc">Automated lead collection engine, real-time tour price calculator, and administrative lead tracking modal.</p>
+                        <div class="project-footer">
+                            <span class="project-metric"><i class="fa-solid fa-chart-line"></i> +340% Lead Conversion</span>
+                            <div class="service-tags" style="margin:0;">
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-card" data-category="ai">
+                    <div class="project-img-box" style="background-image: linear-gradient(135deg, #1e1b4b, #311b92); display:flex; align-items:center; justify-content:center;">
+                        <i class="fa-solid fa-brain" style="font-size: 64px; color: var(--secondary);"></i>
+                        <span class="project-category-badge">AI Automation</span>
+                        <div class="project-overlay">
+                            <button class="btn btn-primary btn-sm view-case-btn" data-project="1">
+                                <i class="fa-solid fa-expand"></i> View Case Study
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI Prospect Scraper & Leads Bot</h3>
+                        <p class="project-desc">Autonomous crawler and data extraction engine exporting categorized buyer leads into structured CSV databases.</p>
+                        <div class="project-footer">
+                            <span class="project-metric"><i class="fa-solid fa-bolt"></i> 10k Leads Processed/hr</span>
+                            <div class="service-tags" style="margin:0;">
+                                <span class="tag">Python</span>
+                                <span class="tag">AI API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass-card" data-category="uiux">
+                    <div class="project-img-box" style="background-image: linear-gradient(135deg, #064e3b, #047857); display:flex; align-items:center; justify-content:center;">
+                        <i class="fa-solid fa-shield-halved" style="font-size: 64px; color: var(--accent-emerald);"></i>
+                        <span class="project-category-badge">SaaS & Fintech</span>
+                        <div class="project-overlay">
+                            <button class="btn btn-primary btn-sm view-case-btn" data-project="2">
+                                <i class="fa-solid fa-expand"></i> View Case Study
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Apex Cloud Financial Dashboard</h3>
+                        <p class="project-desc">Glassmorphism UI dashboard for tracking SaaS MRR, active subscriber metrics, and automated invoice billing.</p>
+                        <div class="project-footer">
+                            <span class="project-metric"><i class="fa-solid fa-star"></i> 4.9/5 Rating</span>
+                            <div class="service-tags" style="margin:0;">
+                                <span class="tag">React</span>
+                                <span class="tag">Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Project Cost Estimator -->
+    <section class="section" id="estimator">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="badge">Instant Tool</span>
+                <h2>Interactive Project Cost & Scope Estimator</h2>
+                <p>Select your requirements to receive an immediate estimate for your project scope.</p>
+            </div>
+
+            <div class="calculator-box glass-panel">
+                <div class="calc-grid">
+                    <div class="calc-inputs">
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-cubes"></i> Project Type</label>
+                            <select id="calcProjectType">
+                                <option value="1200" data-name="Landing Page & Branding">Single Landing Page & Branding ($1,200)</option>
+                                <option value="2800" data-name="Full Custom Web App" selected>Full Custom Web Application ($2,800)</option>
+                                <option value="4500" data-name="Enterprise SaaS / AI Platform">Enterprise SaaS & AI Bot Platform ($4,500)</option>
+                                <option value="1800" data-name="UI/UX Redesign">Complete UI/UX Redesign ($1,800)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-stopwatch"></i> Target Timeline</label>
+                            <select id="calcTimeline">
+                                <option value="1.0" selected>Standard (3 - 4 Weeks)</option>
+                                <option value="1.25">Rush Speed (1 - 2 Weeks) [+25%]</option>
+                                <option value="0.9">Flexible Pace (6+ Weeks) [10% Discount]</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-list-check"></i> Add-on Features & Integrations</label>
+                            <div class="checkbox-grid">
+                                <label class="check-card active">
+                                    <input type="checkbox" class="addon-check" value="500" data-title="AI Chatbot / LLM Integration" checked>
+                                    <span>AI Bot / LLM Integration ($500)</span>
+                                </label>
+                                <label class="check-card active">
+                                    <input type="checkbox" class="addon-check" value="400" data-title="SEO & Core Web Vitals 99+" checked>
+                                    <span>SEO & 99+ Speed Optimization ($400)</span>
+                                </label>
+                                <label class="check-card">
+                                    <input type="checkbox" class="addon-check" value="600" data-title="Custom Admin Dashboard">
+                                    <span>Admin Analytics Dashboard ($600)</span>
+                                </label>
+                                <label class="check-card">
+                                    <input type="checkbox" class="addon-check" value="350" data-title="Stripe & Payment Gateway">
+                                    <span>Payment Gateway Setup ($350)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="calc-summary-card">
+                        <div>
+                            <h3 style="margin-bottom: 20px;"><i class="fa-solid fa-receipt"></i> Scope & Budget Summary</h3>
+                            <div class="summary-line">
+                                <span>Base Scope:</span>
+                                <strong id="summaryBaseName">Full Custom Web Application</strong>
+                            </div>
+                            <div class="summary-line">
+                                <span>Add-ons Total:</span>
+                                <strong id="summaryAddonsPrice">$900</strong>
+                            </div>
+                            <div class="summary-line">
+                                <span>Timeline Adjustment:</span>
+                                <strong id="summaryTimelineName">Standard (3-4 Wks)</strong>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="total-estimate-box">
+                                <p style="font-size: 13px; color: var(--text-muted);">Estimated Project Budget</p>
+                                <div class="total-price" id="calcTotalPrice">$3,700</div>
+                                <small style="color: var(--text-muted);">* Flexible payment milestones available</small>
+                            </div>
+
+                            <button class="btn btn-primary btn-block btn-lg" id="lockEstimateBtn">
+                                <i class="fa-solid fa-paper-plane"></i> Lock Scope & Contact Apex
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Testimonials -->
+    <section class="section" id="testimonials" style="background: rgba(15, 23, 42, 0.4);">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="badge">Client Endorsements</span>
+                <h2>What Founders & Executives Say</h2>
+                <p>Feedback from business leaders who built high-performing products with us.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card glass-panel">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Apex Studio engineered our automated lead engine in record time. Our conversion rate jumped over 300% within the first month!"</p>
+                    <div class="client-info">
+                        <div class="client-avatar">TH</div>
+                        <div>
+                            <strong style="display:block;">Tanvir Hossain</strong>
+                            <small style="color: var(--text-muted);">Director, Cholojai Tours</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card glass-panel">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The AI automation bot they developed processes thousands of customer requests daily without missing a beat. Exceptional code quality."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">SK</div>
+                        <div>
+                            <strong style="display:block;">Sarah Khan</strong>
+                            <small style="color: var(--text-muted);">Head of Ops, NexusTech</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card glass-panel">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Flawless glassmorphism UI design combined with blazingly fast load speeds. Our users constantly compliment the new platform."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">MR</div>
+                        <div>
+                            <strong style="display:block;">Mahmudur Rahman</strong>
+                            <small style="color: var(--text-muted);">Co-Founder, SaaSFlow</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Lead Form -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info-panel">
+                    <span class="badge">Let's Connect</span>
+                    <h2>Have a Project in Mind?</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 24px;">
+                        Whether you need a custom web application, an AI integration, or an end-to-end design overhaul, we are ready to bring your vision to life.
+                    </p>
+
+                    <div class="contact-info-list">
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <strong style="display:block;">Email Us</strong>
+                                <span style="color: var(--text-muted);">hello@apexstudio.dev</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div>
+                                <strong style="display:block;">Direct WhatsApp</strong>
+                                <span style="color: var(--text-muted);">+880 1700-000000</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <strong style="display:block;">Location</strong>
+                                <span style="color: var(--text-muted);">Dhaka, Bangladesh (Available Worldwide)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-panel glass-panel" style="padding: 36px;">
+                    <h3 style="margin-bottom: 20px;"><i class="fa-solid fa-paper-plane"></i> Send Project Proposal</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label>Your Name *</label>
+                            <input type="text" id="contactName" class="form-control" placeholder="e.g. Alex Mercer" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email or WhatsApp *</label>
+                            <input type="text" id="contactContact" class="form-control" placeholder="alex@company.com / +1 234 567 890" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Project Scope / Service Required</label>
+                            <input type="text" id="contactScope" class="form-control" placeholder="e.g. Web App + AI Chatbot">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Project Details / Requirements</label>
+                            <textarea id="contactDetails" rows="4" class="form-control" placeholder="Describe your goals, timeline, or key features..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                            <i class="fa-solid fa-paper-plane"></i> Submit Project Proposal
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container flex-between">
+            <div>
+                <p><strong>Apex Digital Studio & Engineering</strong></p>
+                <p>&copy; 2026 Apex Studio. All rights reserved.</p>
+            </div>
+            <div style="display:flex; gap: 16px;">
+                <button class="btn btn-secondary btn-sm" id="footerAdminBtn"><i class="fa-solid fa-folder"></i> Admin Dashboard</button>
+                <a href="#hero" class="btn btn-secondary btn-sm"><i class="fa-solid fa-arrow-up"></i> Back to Top</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Inquiries Management Modal (Admin Dashboard) -->
+    <div class="modal" id="adminModal">
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-folder-open"></i> Client Project Inquiries Dashboard</h3>
+                <button class="close-modal" id="closeAdminBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--text-muted); margin-bottom: 16px;">Captured client inquiries and project estimates saved locally on your device.</p>
+                <div class="table-responsive">
+                    <table class="leads-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Client Name</th>
+                                <th>Contact</th>
+                                <th>Project Scope</th>
+                                <th>Budget</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inquiriesTableBody">
+                            <!-- Injected via JS -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="noInquiriesMsg" class="text-center" style="padding: 30px;">
+                    <i class="fa-solid fa-inbox fa-3x" style="color: var(--text-muted); margin-bottom: 10px;"></i>
+                    <p style="color: var(--text-muted);">No project inquiries captured yet.</p>
+                </div>
+            </div>
+            <div class="modal-footer flex-between" style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-color);">
+                <button class="btn btn-danger btn-sm" id="clearInquiriesBtn"><i class="fa-solid fa-trash"></i> Clear All</button>
+                <button class="btn btn-secondary btn-sm" id="exportInquiriesBtn"><i class="fa-solid fa-download"></i> Export as Text</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Case Study Modal -->
+    <div class="modal" id="caseStudyModal">
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h3 id="caseModalTitle"><i class="fa-solid fa-circle-info"></i> Project Details</h3>
+                <button class="close-modal" id="closeCaseModalBtn">&times;</button>
+            </div>
+            <div class="modal-body" id="caseModalBody">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "name": "apex-studio-portfolio",
+  "builds": [
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "api/leads.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/leads", "dest": "/api/leads.js" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}

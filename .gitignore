@@ -1,0 +1,9 @@
+.gemini/
+.local/
+.npm/
+.cache/
+.bashrc
+.profile
+Downloads/
+__pycache__/
+*.zip
