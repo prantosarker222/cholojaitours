@@ -603,23 +603,25 @@ body.light .fgroup select option{background:#ffffff;color:#0f172a}
   .corp-wrap{padding:24px 16px}
   .corp-card{padding:20px 16px}
 }
-@media(max-width:1100px){
+@media(min-width:1400px){
+  .container{max-width:1320px}
+  .pkg-grid{grid-template-columns:repeat(4,1fr);gap:28px}
+}
+@media(max-width:1200px){
+  .pkg-grid{grid-template-columns:repeat(3,1fr);gap:20px}
+  .svc-grid{grid-template-columns:repeat(3,1fr)}
+  .bd-spots-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:992px){
+  .corp-wrap{grid-template-columns:1fr;padding:32px 24px}
   .pkg-grid{grid-template-columns:repeat(2,1fr)}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
   .why-grid{grid-template-columns:repeat(2,1fr)}
   .bd-spots-grid{grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:900px){
-  .estimator-wrap{grid-template-columns:1fr;border-radius:var(--r2)}
-  .est-form{border-right:none;border-bottom:1px solid var(--border);padding:24px 18px}
-  .est-summary{padding:24px 18px}
-  .contact-grid{grid-template-columns:1fr}
-  .review-grid{grid-template-columns:1fr}
-  .form-card{padding:24px 20px}
-}
 @media(max-width:768px){
   .nav-container{height:72px;padding:0 16px}
-  .brand-logo-img{height:46px;padding:0}
+  .brand-logo-img{height:46px;padding:3px 8px}
   .nav-links{display:none}
   .nav-actions .cta-btn{display:none}
   .hamburger{display:flex}
@@ -627,22 +629,19 @@ body.light .fgroup select option{background:#ffffff;color:#0f172a}
   .svc-grid{grid-template-columns:1fr}
   .why-grid{grid-template-columns:1fr}
   .bd-spots-grid{grid-template-columns:1fr}
-  .hero-inner{padding:100px 18px 60px}
-  .hero-title{font-size: clamp(30px, 8vw, 42px);margin-bottom:16px}
-  .hero-sub{font-size:15px;margin-bottom:28px}
+  .hero-inner{padding:90px 18px 50px}
+  .hero-title{font-size: clamp(28px, 7vw, 40px);margin-bottom:14px}
+  .hero-sub{font-size:14px;margin-bottom:24px}
   .hero-stats{gap:12px 0}
-  .hstat{padding:0 14px}
+  .hstat{padding:0 12px}
   .hstat:first-child{padding-left:0}
   .hstat-num{font-size:24px}
-  .section{padding:56px 0}
+  .section{padding:48px 0}
   .container{padding:0 16px}
   .form-row-2{grid-template-columns:1fr}
-  .addon-grid{grid-template-columns:1fr;gap:8px}
-  .addon{padding:10px 12px;font-size:12px;word-break:break-word}
-  .fgroup select{font-size:13px;padding:12px 36px 12px 12px;white-space:normal;text-overflow:ellipsis}
-  .sum-row{font-size:13px;padding:10px 0}
-  .total-block{padding:16px 12px}
-  .total-num{font-size:24px}
+  .contact-grid{grid-template-columns:1fr}
+  .review-grid{grid-template-columns:1fr}
+  .form-card{padding:24px 18px}
   .wa-fab-label{display:none}
   .wa-fab{padding:14px;bottom:20px;right:16px}
   .wa-fab i{font-size:24px}
@@ -653,14 +652,13 @@ body.light .fgroup select option{background:#ffffff;color:#0f172a}
   .pkg-detail-btn{opacity:1;transform:none}
 }
 @media(max-width:480px){
-  .hero-title{font-size:28px}
+  .hero-title{font-size:26px}
   .hero-stats{flex-direction:column;align-items:flex-start;gap:12px}
   .hstat-divider{display:none}
   .hstat{padding:0}
   .hero-btns{flex-direction:column;width:100%}
   .hero-btns .cta-btn,.hero-btns .outline-btn{width:100%;justify-content:center}
   .why-grid{grid-template-columns:1fr}
-  .total-num{font-size:22px}
   .modal-actions{flex-direction:column;gap:10px;align-items:stretch}
   .modal-actions button{width:100%;justify-content:center}
   .bd-spot-card{flex-direction:column;padding:18px}
