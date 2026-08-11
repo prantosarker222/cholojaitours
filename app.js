@@ -6,7 +6,7 @@
   'use strict';
 
   // ── Config ────────────────────────────────────────────────
-  const WA_NUM      = '8801788823404';
+  const WA_NUM      = '8801988443399';
   const LEADS_KEY   = 'cholojai_leads_v3';
   const THEME_KEY   = 'cholojai_theme';
   const API_URL     = ['localhost','127.0.0.1'].includes(location.hostname) || location.protocol==='file:'
@@ -216,16 +216,16 @@
     if (bodyEl) bodyEl.innerHTML = `
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px;align-items:center;">
         <span class="pill-badge">${esc(p.category)}</span>
-        <span style="background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.3);color:#06b6d4;padding:5px 14px;border-radius:999px;font-size:12px;font-weight:700;">
+        <span style="background:rgba(0,122,140,.12);border:1px solid rgba(0,122,140,.3);color:var(--gold);padding:5px 14px;border-radius:999px;font-size:12px;font-weight:700;">
           <i class="fa-regular fa-clock"></i> ${esc(p.duration)}
         </span>
-        <span style="font-size:20px;font-weight:800;font-family:'Outfit',sans-serif;color:var(--gold);">${esc(p.price)} <small style="font-size:12px;font-weight:500;color:var(--txt2);">${esc(p.per)}</small></span>
+        <span style="font-size:16px;font-weight:800;font-family:'Outfit',sans-serif;color:var(--brand-lime);">Ask for Custom Rate</span>
       </div>
       <h4 style="font-size:14px;font-weight:700;color:var(--gold);margin-bottom:12px;"><i class="fa-solid fa-check-circle"></i> What's Included</h4>
       <ul style="padding-left:18px;display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
         ${p.highlights.map(h=>`<li style="font-size:14px;color:var(--txt2);line-height:1.6;">${esc(h)}</li>`).join('')}
       </ul>
-      <h4 style="font-size:14px;font-weight:700;color:var(--cyan);margin-bottom:12px;"><i class="fa-solid fa-map-location-dot"></i> Day-by-Day Itinerary</h4>
+      <h4 style="font-size:14px;font-weight:700;color:var(--brand-lime);margin-bottom:12px;"><i class="fa-solid fa-map-location-dot"></i> Day-by-Day Itinerary</h4>
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:28px;">
         ${p.itinerary.map(it=>`
           <div style="display:flex;gap:14px;padding:12px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--r);">
@@ -234,19 +234,18 @@
           </div>
         `).join('')}
       </div>
-      <button class="cta-btn full lg" id="pkgBookBtn" data-title="${esc(p.title)}" data-price="${esc(p.price)} ${esc(p.per)}">
-        <i class="fa-brands fa-whatsapp"></i> Reserve on WhatsApp
+      <button class="cta-btn full lg" id="pkgBookBtn" data-title="${esc(p.title)}">
+        <i class="fa-brands fa-whatsapp"></i> Ask Price on WhatsApp
       </button>`;
 
     openModal('pkgModal');
     $('#pkgBookBtn')?.addEventListener('click', e => {
       const t = e.currentTarget.dataset.title;
-      const pr = e.currentTarget.dataset.price;
       closeModal('pkgModal');
-      const sc = $('#cScope'); if (sc) sc.value = `${t} (${pr})`;
-      const cd = $('#cDetails'); if (cd) cd.value = `Hi Cholojai Tours! I'd like to book "${t}" (${pr}). Please share availability.`;
+      const sc = $('#cScope'); if (sc) sc.value = `${t} (Custom Quote Request)`;
+      const cd = $('#cDetails'); if (cd) cd.value = `Hi Cholojai Tours! I'd like to ask for the best custom price for "${t}". Please share availability and rates.`;
       document.getElementById('contact')?.scrollIntoView({behavior:'smooth'});
-      toast('✅ Package added to booking form!');
+      toast('✅ Package added to inquiry form!');
     });
   }
 
@@ -294,14 +293,13 @@
 
   $('#reserveBtn')?.addEventListener('click', () => {
     const destName = (estDest?.options[estDest.selectedIndex]?.dataset.name || 'Tour Package').split('(')[0].trim();
-    const total = $('#estTotal')?.textContent || '৳0';
     const paxTxt = (estPax?.options[estPax.selectedIndex]?.text || 'Solo').split('[')[0].trim();
     const sc = $('#cScope');
     const cd = $('#cDetails');
-    if (sc) sc.value = `${destName} — ${total} (${paxTxt})`;
-    if (cd) cd.value = `Hi Cholojai Tours! My budget estimate is ${total} for ${destName} (${paxTxt}). Please confirm availability and dates.`;
+    if (sc) sc.value = `${destName} (Custom Quote for ${paxTxt})`;
+    if (cd) cd.value = `Hi Cholojai Tours! Please provide a custom price quote for ${destName} (${paxTxt}).`;
     document.getElementById('contact')?.scrollIntoView({behavior:'smooth'});
-    toast('✅ Budget estimate added to booking form!');
+    toast('✅ Custom quote request added to form!');
   });
 
   // ── Contact Form ───────────────────────────────────────────
