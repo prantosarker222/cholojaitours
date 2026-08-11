@@ -8,3 +8,5 @@ Downloads/
 __pycache__/
 *.zip
 .config/
+.vercel
+.env*
