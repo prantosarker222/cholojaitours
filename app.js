@@ -224,17 +224,56 @@
     drawer?.classList.remove('open');
   }));
 
-  // ── Theme Toggle ───────────────────────────────────────────
+  // ── Hero Photo Slider ──────────────────────────────────────
+  const slides = $$('.hero-slider .slide');
+  const dots   = $$('.slider-dots .dot');
+  let currentSlide = 0;
+  let slideTimer   = null;
+
+  function showSlide(idx) {
+    if (!slides.length) return;
+    currentSlide = (idx + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
+    dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+  }
+
+  function startSlideTimer() {
+    stopSlideTimer();
+    slideTimer = setInterval(() => showSlide(currentSlide + 1), 4500);
+  }
+
+  function stopSlideTimer() {
+    if (slideTimer) clearInterval(slideTimer);
+  }
+
+  $('#prevSlide')?.addEventListener('click', () => { showSlide(currentSlide - 1); startSlideTimer(); });
+  $('#nextSlide')?.addEventListener('click', () => { showSlide(currentSlide + 1); startSlideTimer(); });
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => { showSlide(i); startSlideTimer(); });
+  });
+
+  const heroEl = $('#hero');
+  heroEl?.addEventListener('mouseenter', stopSlideTimer);
+  heroEl?.addEventListener('mouseleave', startSlideTimer);
+  showSlide(0);
+  startSlideTimer();
+
+  // ── Theme Toggle (Default: Light Mode) ────────────────────
   const themeBtn = $('#themeBtn');
-  if (localStorage.getItem(THEME_KEY) === 'light') {
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  if (savedTheme === 'dark') {
+    document.body.classList.remove('light');
+    if (themeBtn) themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+  } else {
     document.body.classList.add('light');
     if (themeBtn) themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
   }
+
   themeBtn?.addEventListener('click', () => {
-    const light = document.body.classList.toggle('light');
-    themeBtn.innerHTML = light ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
-    localStorage.setItem(THEME_KEY, light ? 'light' : 'dark');
-    toast(light ? '☀️ Light mode' : '🌙 Dark mode');
+    const isLight = document.body.classList.toggle('light');
+    themeBtn.innerHTML = isLight ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+    localStorage.setItem(THEME_KEY, isLight ? 'light' : 'dark');
+    toast(isLight ? '☀️ Light mode' : '🌙 Dark mode');
   });
 
   // ── Scroll Reveal ──────────────────────────────────────────

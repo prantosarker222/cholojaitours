@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="light">
 
 <!-- Scroll Progress Bar -->
 <div id="progressBar"></div>
@@ -39,7 +39,6 @@
     <nav class="nav-links" id="navLinks">
       <a href="#packages">Packages</a>
       <a href="#bd-destinations">BD Spots</a>
-      <a href="#corporate">Corporate</a>
       <a href="#services">Services</a>
       <a href="#why-us">Why Us</a>
       <a href="#testimonials">Reviews</a>
@@ -57,7 +56,6 @@
   <nav class="mobile-drawer" id="mobileDrawer">
     <a href="#packages" class="drawer-link">Tour Packages</a>
     <a href="#bd-destinations" class="drawer-link">BD Tourist Spots</a>
-    <a href="#corporate" class="drawer-link">Corporate Tours</a>
     <a href="#services" class="drawer-link">Visa &amp; Flights</a>
     <a href="#why-us" class="drawer-link">Why Choose Us</a>
     <a href="#testimonials" class="drawer-link">Reviews</a>
@@ -70,9 +68,35 @@
      HERO
 ════════════════════════════════════════════════════════════ -->
 <section class="hero" id="hero">
-  <div class="hero-bg">
-    <img src="images/hero_bg.jpg" alt="Tropical island aerial view" loading="eager">
+  <div class="hero-slider" id="heroSlider">
+    <div class="slide active">
+      <img src="images/hero_bg.jpg" alt="Tropical island aerial view" loading="eager">
+    </div>
+    <div class="slide">
+      <img src="images/dest_coxsbazar.jpg" alt="Cox's Bazar Sea Beach" loading="lazy">
+    </div>
+    <div class="slide">
+      <img src="images/dest_sajek.jpg" alt="Sajek Valley Clouds" loading="lazy">
+    </div>
+    <div class="slide">
+      <img src="images/dest_maldives.jpg" alt="Maldives Overwater Resort" loading="lazy">
+    </div>
+    <div class="slide">
+      <img src="images/dest_kashmir.jpg" alt="Kashmir Dal Lake" loading="lazy">
+    </div>
+
     <div class="hero-overlay"></div>
+
+    <button class="slider-arrow prev-slide" id="prevSlide" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="slider-arrow next-slide" id="nextSlide" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
+
+    <div class="slider-dots" id="sliderDots">
+      <span class="dot active" data-slide="0"></span>
+      <span class="dot" data-slide="1"></span>
+      <span class="dot" data-slide="2"></span>
+      <span class="dot" data-slide="3"></span>
+      <span class="dot" data-slide="4"></span>
+    </div>
   </div>
 
   <div class="hero-inner">
@@ -90,8 +114,8 @@
     </p>
 
     <div class="hero-btns fade-up delay-3">
-      <a href="#estimator" class="cta-btn lg"><i class="fa-solid fa-calculator"></i> Calculate Budget</a>
-      <a href="#packages" class="outline-btn lg"><i class="fa-solid fa-compass"></i> View Packages</a>
+      <a href="#packages" class="cta-btn lg"><i class="fa-solid fa-compass"></i> Explore Packages</a>
+      <a href="#contact" class="outline-btn lg"><i class="fa-brands fa-whatsapp"></i> Inquiry Now</a>
     </div>
 
     <div class="hero-stats fade-up delay-4">
@@ -740,101 +764,7 @@
 </section>
 
 
-<!-- ═══════════════════════════════════════════════════════
-     CORPORATE & BUSINESS TRAVEL (LEAD GENERATION)
-════════════════════════════════════════════════════════════ -->
-<section class="section bg-layer" id="corporate">
-  <div class="container">
-    <div class="corp-wrap fade-up">
-      <div class="corp-left">
-        <div class="pill-badge">🏢 Business &amp; Group Travel</div>
-        <h2>Corporate Tour Solutions &amp; MICE Events</h2>
-        <p>Empowering organizations with end-to-end corporate retreats, annual picnics, international business conferences, and team bonding trips. Dedicated travel manager &amp; customized invoicing guaranteed.</p>
 
-        <div class="corp-features">
-          <div class="corp-feat">
-            <div class="corp-feat-icon"><i class="fa-solid fa-briefcase"></i></div>
-            <div>
-              <h4>Corporate Retreats &amp; Picnics</h4>
-              <p>Turnkey planning for Cox's Bazar, Sajek, Bandarban, Sundarban cruises &amp; luxury resort retreats for teams of 20 to 500+ employees.</p>
-            </div>
-          </div>
-
-          <div class="corp-feat">
-            <div class="corp-feat-icon"><i class="fa-solid fa-handshake"></i></div>
-            <div>
-              <h4>MICE &amp; International Conferences</h4>
-              <p>Seamless venue booking, flight tickets, hotel reservations, transfers &amp; visa coordination for global expos in Dubai, Thailand &amp; Singapore.</p>
-            </div>
-          </div>
-
-          <div class="corp-feat">
-            <div class="corp-feat-icon"><i class="fa-solid fa-receipt"></i></div>
-            <div>
-              <h4>Corporate Pricing &amp; Credit Terms</h4>
-              <p>Transparent B2B invoicing, GST billing, group discount rates, and dedicated account manager support 24/7.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="corp-right">
-        <div class="corp-card">
-          <h3><i class="fa-solid fa-building"></i> Request Corporate Proposal</h3>
-          <p>Get a customized proposal and group price quotation tailored for your company or organization.</p>
-
-          <form id="corpForm" autocomplete="off" novalidate>
-            <div class="fgroup">
-              <label><i class="fa-solid fa-building" style="color:var(--gold);"></i> Company / Organization Name *</label>
-              <input type="text" id="corpCompany" placeholder="e.g. Grameenphone / Tech Solutions Ltd" required>
-            </div>
-            <div class="form-row-2">
-              <div class="fgroup">
-                <label><i class="fa-solid fa-user" style="color:var(--gold);"></i> Contact Person *</label>
-                <input type="text" id="corpName" placeholder="Your Name / HR / Admin" required>
-              </div>
-              <div class="fgroup">
-                <label><i class="fa-brands fa-whatsapp" style="color:var(--gold);"></i> Corporate Phone / WhatsApp *</label>
-                <input type="tel" id="corpPhone" placeholder="+880 17XX-XXXXXX" required>
-              </div>
-            </div>
-            <div class="form-row-2">
-              <div class="fgroup">
-                <label><i class="fa-solid fa-location-dot" style="color:var(--gold);"></i> Destination Preference</label>
-                <select id="corpDest">
-                  <option value="Cox's Bazar / St. Martin Beach Resort" selected>Cox's Bazar / St. Martin Beach Resort</option>
-                  <option value="Sajek / Bandarban Hill Retreat">Sajek / Bandarban Hill Retreat</option>
-                  <option value="Tanguar Haor Luxury Houseboat">Tanguar Haor Luxury Houseboat</option>
-                  <option value="Sundarban Mangrove Cruise">Sundarban Mangrove Cruise</option>
-                  <option value="Thailand (Bangkok / Phuket)">Thailand (Bangkok / Phuket)</option>
-                  <option value="Dubai & Abu Dhabi Expo">Dubai &amp; Abu Dhabi Expo</option>
-                  <option value="Custom Destination">Other / Custom Destination</option>
-                </select>
-              </div>
-              <div class="fgroup">
-                <label><i class="fa-solid fa-users" style="color:var(--gold);"></i> Group Size (Employees)</label>
-                <select id="corpPax">
-                  <option value="10-25 Pax">10 – 25 Persons</option>
-                  <option value="25-50 Pax" selected>25 – 50 Persons</option>
-                  <option value="50-100 Pax">50 – 100 Persons</option>
-                  <option value="100+ Pax">100+ Persons (Large Group)</option>
-                </select>
-              </div>
-            </div>
-            <div class="fgroup">
-              <label><i class="fa-solid fa-clipboard-list" style="color:var(--gold);"></i> Special Requirements / Tentative Dates</label>
-              <textarea id="corpNotes" rows="3" placeholder="Specify tentative dates, hotel tier, conference facilities or custom budget..."></textarea>
-            </div>
-            <button type="submit" class="cta-btn full lg">
-              <i class="fa-brands fa-whatsapp"></i> Get Corporate Proposal on WhatsApp
-            </button>
-          </form>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 
 
