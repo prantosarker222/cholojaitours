@@ -260,18 +260,30 @@
 
   // ── Theme Toggle (Default: Light Mode) ────────────────────
   const themeBtn = $('#themeBtn');
+  const themeMeta = $('#themeColorMeta');
   const savedTheme = localStorage.getItem(THEME_KEY);
+
+  const applyTheme = (isLight) => {
+    if (isLight) {
+      document.body.classList.add('light');
+      if (themeBtn) themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+      themeMeta?.setAttribute('content', '#f8fafc');
+    } else {
+      document.body.classList.remove('light');
+      if (themeBtn) themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+      themeMeta?.setAttribute('content', '#060c14');
+    }
+  };
+
   if (savedTheme === 'dark') {
-    document.body.classList.remove('light');
-    if (themeBtn) themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    applyTheme(false);
   } else {
-    document.body.classList.add('light');
-    if (themeBtn) themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    applyTheme(true);
   }
 
   themeBtn?.addEventListener('click', () => {
-    const isLight = document.body.classList.toggle('light');
-    themeBtn.innerHTML = isLight ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+    const isLight = !document.body.classList.contains('light');
+    applyTheme(isLight);
     localStorage.setItem(THEME_KEY, isLight ? 'light' : 'dark');
     toast(isLight ? '☀️ Light mode' : '🌙 Dark mode');
   });
