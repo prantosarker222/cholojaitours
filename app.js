@@ -351,6 +351,23 @@
     if (e.key === 'Escape') $$('.modal.open').forEach(m => { m.classList.remove('open'); document.body.style.overflow = ''; });
   });
 
+  // ── BD Spots Filter ───────────────────────────────────────
+  $$('.spot-tab').forEach(btn => btn.addEventListener('click', () => {
+    $$('.spot-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.spotcat;
+    $$('.bd-spot-card').forEach(c => {
+      c.style.display = (cat === 'all' || c.dataset.spotcat === cat) ? 'flex' : 'none';
+    });
+  }));
+
+  // BD Spots Inquire button
+  $$('.book-spot').forEach(b => b.addEventListener('click', () => {
+    const sc = $('#cScope'); if (sc) sc.value = b.dataset.spot;
+    document.getElementById('contact')?.scrollIntoView({behavior:'smooth'});
+    toast('✅ Spot added to inquiry form!');
+  }));
+
   // ── Package Filter ─────────────────────────────────────────
   $$('.ftab').forEach(btn => btn.addEventListener('click', () => {
     $$('.ftab').forEach(b => b.classList.remove('active'));

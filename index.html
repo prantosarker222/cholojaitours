@@ -144,192 +144,268 @@
       <p>From misty hilltop valleys to natural sea beaches, mangrove forests &amp; serene wetlands — discover your next local adventure.</p>
     </div>
 
+    <div class="filter-row fade-up">
+      <button class="spot-tab active" data-spotcat="all">All Spots (10)</button>
+      <button class="spot-tab" data-spotcat="hills">⛰️ Hills &amp; Valleys</button>
+      <button class="spot-tab" data-spotcat="beaches">🏖️ Beaches &amp; Islands</button>
+      <button class="spot-tab" data-spotcat="nature">🌿 Forests &amp; Wetlands</button>
+    </div>
+
     <div class="bd-spots-grid">
       
-      <div class="bd-spot-card fade-up">
+      <!-- 1. Sajek Valley -->
+      <div class="bd-spot-card fade-up" data-spotcat="hills">
         <div class="bd-spot-img-wrap">
           <img src="images/dest_sajek.jpg" alt="Sajek Valley" loading="lazy">
           <div class="bd-spot-overlay"></div>
+          <span class="bd-spot-region-tag"><i class="fa-solid fa-location-dot"></i> Rangamati</span>
+          <span class="bd-spot-rating-tag"><i class="fa-solid fa-star"></i> 4.9</span>
         </div>
         <div class="bd-spot-body">
           <div class="bd-spot-header">
             <h3>Sajek Valley</h3>
-            <span class="bd-spot-region">Rangamati</span>
+            <span class="bd-spot-badge">Queen of Hills</span>
           </div>
-          <p>The queen of hills where clouds float beneath your hilltop cottage. Experience Konglak Peak, Helipad sunset &amp; Ruilui Para tribal village.</p>
-          <a href="#contact" class="bd-spot-link"><i class="fa-brands fa-whatsapp"></i> Inquiry Spot</a>
+          <p>Where clouds float beneath your hilltop cottage. Experience Konglak Peak, Helipad sunset &amp; Ruilui Para tribal village.</p>
+          <div class="bd-spot-tags">
+            <span>☁️ Cloud Cottage</span>
+            <span>🚙 Chander Gari</span>
+            <span>🌅 Sunset Point</span>
+          </div>
+          <div class="bd-spot-actions">
+            <a href="#contact" class="bd-spot-link book-spot" data-spot="Sajek Valley Tour Package"><i class="fa-brands fa-whatsapp"></i> Inquire Spot</a>
+          </div>
         </div>
       </div>
 
-      <div class="bd-spot-card fade-up delay-1">
+      <!-- 2. Bandarban -->
+      <div class="bd-spot-card fade-up delay-1" data-spotcat="hills">
         <div class="bd-spot-img-wrap">
           <img src="images/spot_bandarban.jpg" alt="Nilgiri Bandarban" loading="lazy">
           <div class="bd-spot-overlay"></div>
+          <span class="bd-spot-region-tag"><i class="fa-solid fa-location-dot"></i> Hill Tracts</span>
+          <span class="bd-spot-rating-tag"><i class="fa-solid fa-star"></i> 4.9</span>
         </div>
         <div class="bd-spot-body">
           <div class="bd-spot-header">
             <h3>Bandarban</h3>
-            <span class="bd-spot-region">Hill Tracts</span>
+            <span class="bd-spot-badge">Misty Peaks</span>
           </div>
-          <p>Land of misty peaks, Nilgiri cloud resort, Chimbuk Hill, Bogakain Lake, Keokradong &amp; Shailopropat Waterfall.</p>
-          <a href="#contact" class="bd-spot-link"><i class="fa-brands fa-whatsapp"></i> Inquiry Spot</a>
+          <p>Land of highest peaks, Nilgiri cloud resort, Chimbuk Hill, Bogakain Lake, Keokradong &amp; Shailopropat Waterfall.</p>
+          <div class="bd-spot-tags">
+            <span>🏔️ Nilgiri Peak</span>
+            <span>🏞️ Boga Lake</span>
+            <span>🌊 Waterfall</span>
+          </div>
+          <div class="bd-spot-actions">
+            <a href="#contact" class="bd-spot-link book-spot" data-spot="Bandarban & Nilgiri Tour"><i class="fa-brands fa-whatsapp"></i> Inquire Spot</a>
+          </div>
         </div>
       </div>
 
-      <div class="bd-spot-card fade-up delay-2">
+      <!-- 3. Cox's Bazar -->
+      <div class="bd-spot-card fade-up delay-2" data-spotcat="beaches">
         <div class="bd-spot-img-wrap">
           <img src="images/dest_coxsbazar.jpg" alt="Cox's Bazar Sea Beach" loading="lazy">
           <div class="bd-spot-overlay"></div>
+          <span class="bd-spot-region-tag"><i class="fa-solid fa-location-dot"></i> Chittagong</span>
+          <span class="bd-spot-rating-tag"><i class="fa-solid fa-star"></i> 5.0</span>
         </div>
         <div class="bd-spot-body">
           <div class="bd-spot-header">
             <h3>Cox's Bazar</h3>
-            <span class="bd-spot-region">Chittagong</span>
+            <span class="bd-spot-badge">120km Sea Beach</span>
           </div>
-          <p>World's longest natural sea beach (120 km). Laboni Beach sunset, Inani Beach coral stones, Marine Drive &amp; Himchari waterfall.</p>
-          <a href="#contact" class="bd-spot-link"><i class="fa-brands fa-whatsapp"></i> Inquiry Spot</a>
+          <p>World's longest natural sea beach. Laboni Beach sunset, Inani Beach coral stones, Marine Drive &amp; Himchari waterfall.</p>
+          <div class="bd-spot-tags">
+            <span>🏖️ Longest Beach</span>
+            <span>🚗 Marine Drive</span>
+            <span>🌅 Laboni Sunset</span>
+          </div>
+          <div class="bd-spot-actions">
+            <a href="#contact" class="bd-spot-link book-spot" data-spot="Cox's Bazar Sea Beach Package"><i class="fa-brands fa-whatsapp"></i> Inquire Spot</a>
+          </div>
         </div>
       </div>
 
-      <div class="bd-spot-card fade-up">
+      <!-- 4. St. Martin's Island -->
+      <div class="bd-spot-card fade-up" data-spotcat="beaches">
         <div class="bd-spot-img-wrap">
           <img src="images/spot_stmartin.jpg" alt="St. Martin's Island" loading="lazy">
           <div class="bd-spot-overlay"></div>
+          <span class="bd-spot-region-tag"><i class="fa-solid fa-location-dot"></i> Bay of Bengal</span>
+          <span class="bd-spot-rating-tag"><i class="fa-solid fa-star"></i> 4.9</span>
         </div>
         <div class="bd-spot-body">
           <div class="bd-spot-header">
             <h3>St. Martin's Island</h3>
-            <span class="bd-spot-region">Bay of Bengal</span>
+            <span class="bd-spot-badge">Coral Paradise</span>
           </div>
           <p>Bangladesh's only coral island. Crystal clear turquoise water, Chera Dwip speedboat, coconut groves &amp; seafood feast.</p>
-          <a href="#contact" class="bd-spot-link"><i class="fa-brands fa-whatsapp"></i> Inquiry Spot</a>
+          <div class="bd-spot-tags">
+            <span>🏝️ Coral Island</span>
+            <span>🚤 Chera Dwip</span>
+            <span>🥥 Coconut Grove</span>
+          </div>
+          <div class="bd-spot-actions">
+            <a href="#contact" class="bd-spot-link book-spot" data-spot="St. Martin's Island Cruise Package"><i class="fa-brands fa-whatsapp"></i> Inquire Spot</a>
+          </div>
         </div>
       </div>
 
-      <div class="bd-spot-card fade-up delay-1">
+      <!-- 5. Sundarbans -->
+      <div class="bd-spot-card fade-up delay-1" data-spotcat="nature">
         <div class="bd-spot-img-wrap">
           <img src="images/dest_sundarban.jpg" alt="Sundarbans Mangrove Forest" loading="lazy">
           <div class="bd-spot-overlay"></div>
+          <span class="bd-spot-region-tag"><i class="fa-solid fa-location-dot"></i> Khulna</span>
+          <span class="bd-spot-rating-tag"><i class="fa-solid fa-star"></i> 4.8</span>
         </div>
         <div class="bd-spot-body">
           <div class="bd-spot-header">
             <h3>Sundarbans</h3>
-            <span class="bd-spot-region">Khulna</span>
+            <span class="bd-spot-badge">UNESCO Mangrove</span>
           </div>
           <p>World's largest mangrove forest &amp; UNESCO Heritage site. Royal Bengal Tigers, Kotka beach, Karamjal deer sanctuary &amp; boat safari.</p>
-          <a href="#contact" class="bd-spot-link"><i class="fa-brands fa-whatsapp"></i> Inquiry Spot</a>
+          <div class="bd-spot-tags">
+            <span>🐅 Bengal Tiger</span>
+            <span>🚢 Ship Cruise</span>
+            <span>🦌 Deer Sanctuary</span>
+          </div>
+          <div class="bd-spot-actions">
+            <a href="#contact" class="bd-spot-link book-spot" data-spot="Sundarbans Forest Cruise & Safari"><i class="fa-brands fa-whatsapp"></i> Inquire Spot</a>
+          </div>
         </div>
       </div>
 
-      <div class="bd-spot-card fade-up delay-2">
+      <!-- 6. Tanguar Haor -->
+      <div class="bd-spot-card fade-up delay-2" data-spotcat="nature">
         <div class="bd-spot-img-wrap">
           <img src="images/dest_tanguar.jpg" alt="Tanguar Haor Luxury Houseboat" loading="lazy">
           <div class="bd-spot-overlay"></div>
+          <span class="bd-spot-region-tag"><i class="fa-solid fa-location-dot"></i> Sunamganj</span>
+          <span class="bd-spot-rating-tag"><i class="fa-solid fa-star"></i> 4.9</span>
         </div>
         <div class="bd-spot-body">
           <div class="bd-spot-header">
             <h3>Tanguar Haor</h3>
-            <span class="bd-spot-region">Sunamganj</span>
+            <span class="bd-spot-badge">Water Wonderland</span>
           </div>
           <p>Breathtaking freshwater wetland ecosystem. Luxury houseboat cruising, Tekerhat limestone quarry, Watchtower &amp; starry night sky.</p>
-          <a href="#contact" class="bd-spot-link"><i class="fa-brands fa-whatsapp"></i> Inquiry Spot</a>
+          <div class="bd-spot-tags">
+            <span>🛥️ Houseboat</span>
+            <span>💧 Niladri Lake</span>
+            <span>🌌 Starry Sky</span>
+          </div>
+          <div class="bd-spot-actions">
+            <a href="#contact" class="bd-spot-link book-spot" data-spot="Tanguar Haor Luxury Houseboat Tour"><i class="fa-brands fa-whatsapp"></i> Inquire Spot</a>
+          </div>
         </div>
       </div>
 
-      <div class="bd-spot-card fade-up">
+      <!-- 7. Sreemangal -->
+      <div class="bd-spot-card fade-up" data-spotcat="nature">
         <div class="bd-spot-img-wrap">
           <img src="images/spot_sreemangal.jpg" alt="Sreemangal Tea Estates" loading="lazy">
           <div class="bd-spot-overlay"></div>
+          <span class="bd-spot-region-tag"><i class="fa-solid fa-location-dot"></i> Sylhet</span>
+          <span class="bd-spot-rating-tag"><i class="fa-solid fa-star"></i> 4.8</span>
         </div>
         <div class="bd-spot-body">
           <div class="bd-spot-header">
             <h3>Sreemangal</h3>
-            <span class="bd-spot-region">Sylhet</span>
+            <span class="bd-spot-badge">Tea Capital</span>
           </div>
           <p>The tea capital of Bangladesh. Rolling green tea estates, Lawachara National Park rainforest, Madhabpur Lake &amp; 7-layer tea.</p>
-          <a href="#contact" class="bd-spot-link"><i class="fa-brands fa-whatsapp"></i> Inquiry Spot</a>
+          <div class="bd-spot-tags">
+            <span>🍃 Tea Estates</span>
+            <span>🐒 Lawachara Forest</span>
+            <span>☕ 7-Layer Tea</span>
+          </div>
+          <div class="bd-spot-actions">
+            <a href="#contact" class="bd-spot-link book-spot" data-spot="Sreemangal Tea Estate Holiday"><i class="fa-brands fa-whatsapp"></i> Inquire Spot</a>
+          </div>
         </div>
       </div>
 
-      <div class="bd-spot-card fade-up delay-1">
+      <!-- 8. Rangamati -->
+      <div class="bd-spot-card fade-up delay-1" data-spotcat="hills">
         <div class="bd-spot-img-wrap">
           <img src="images/spot_rangamati.jpg" alt="Rangamati Kaptai Lake" loading="lazy">
           <div class="bd-spot-overlay"></div>
+          <span class="bd-spot-region-tag"><i class="fa-solid fa-location-dot"></i> Kaptai Lake</span>
+          <span class="bd-spot-rating-tag"><i class="fa-solid fa-star"></i> 4.7</span>
         </div>
         <div class="bd-spot-body">
           <div class="bd-spot-header">
             <h3>Rangamati</h3>
-            <span class="bd-spot-region">Kaptai Lake</span>
+            <span class="bd-spot-badge">Lake City</span>
           </div>
           <p>Capital of Kaptai Lake. Hanging Bridge boat ride, Shuvolong Waterfall, Chakma Royal Palace &amp; island restaurant dining.</p>
-          <a href="#contact" class="bd-spot-link"><i class="fa-brands fa-whatsapp"></i> Inquiry Spot</a>
+          <div class="bd-spot-tags">
+            <span>🌉 Hanging Bridge</span>
+            <span>🚤 Kaptai Lake</span>
+            <span>⛰️ Shuvolong Falls</span>
+          </div>
+          <div class="bd-spot-actions">
+            <a href="#contact" class="bd-spot-link book-spot" data-spot="Rangamati & Kaptai Lake Tour"><i class="fa-brands fa-whatsapp"></i> Inquire Spot</a>
+          </div>
         </div>
       </div>
 
-      <div class="bd-spot-card fade-up delay-2">
+      <!-- 9. Kuakata -->
+      <div class="bd-spot-card fade-up delay-2" data-spotcat="beaches">
         <div class="bd-spot-img-wrap">
           <img src="images/spot_kuakata.jpg" alt="Kuakata Sea Beach Sunset" loading="lazy">
           <div class="bd-spot-overlay"></div>
+          <span class="bd-spot-region-tag"><i class="fa-solid fa-location-dot"></i> Patuakhali</span>
+          <span class="bd-spot-rating-tag"><i class="fa-solid fa-star"></i> 4.8</span>
         </div>
         <div class="bd-spot-body">
           <div class="bd-spot-header">
             <h3>Kuakata</h3>
-            <span class="bd-spot-region">Patuakhali</span>
+            <span class="bd-spot-badge">Daughter of Sea</span>
           </div>
-          <p>"Daughter of the Sea" — the rare sea beach in South Asia where you can watch both sunrise and sunset over the ocean horizon.</p>
-          <a href="#contact" class="bd-spot-link"><i class="fa-brands fa-whatsapp"></i> Inquiry Spot</a>
+          <p>"Daughter of the Sea" — the rare panoramic sea beach in South Asia where you can watch both sunrise and sunset over the horizon.</p>
+          <div class="bd-spot-tags">
+            <span>🌅 Sunrise &amp; Sunset</span>
+            <span>🌊 Red Crab Beach</span>
+            <span>🏛️ Buddhist Wells</span>
+          </div>
+          <div class="bd-spot-actions">
+            <a href="#contact" class="bd-spot-link book-spot" data-spot="Kuakata Sea Beach Sunset Tour"><i class="fa-brands fa-whatsapp"></i> Inquire Spot</a>
+          </div>
         </div>
       </div>
 
-      <div class="bd-spot-card fade-up">
+      <!-- 10. Khagrachari -->
+      <div class="bd-spot-card fade-up" data-spotcat="hills">
         <div class="bd-spot-img-wrap">
           <img src="images/spot_khagrachari.jpg" alt="Khagrachari Risang Waterfall" loading="lazy">
           <div class="bd-spot-overlay"></div>
+          <span class="bd-spot-region-tag"><i class="fa-solid fa-location-dot"></i> Hill Tracts</span>
+          <span class="bd-spot-rating-tag"><i class="fa-solid fa-star"></i> 4.7</span>
         </div>
         <div class="bd-spot-body">
           <div class="bd-spot-header">
             <h3>Khagrachari</h3>
-            <span class="bd-spot-region">Hill Tracts</span>
+            <span class="bd-spot-badge">Valley of Mystics</span>
           </div>
           <p>Alutila Mysterious Cave trek, Risang Waterfall, Tareng hilltop view &amp; rich indigenous culture experience.</p>
-          <a href="#contact" class="bd-spot-link"><i class="fa-brands fa-whatsapp"></i> Inquiry Spot</a>
+          <div class="bd-spot-tags">
+            <span>🕳️ Alutila Cave</span>
+            <span>💦 Risang Falls</span>
+            <span>🌄 Tareng Peak</span>
+          </div>
+          <div class="bd-spot-actions">
+            <a href="#contact" class="bd-spot-link book-spot" data-spot="Khagrachari Adventure Tour"><i class="fa-brands fa-whatsapp"></i> Inquire Spot</a>
+          </div>
         </div>
       </div>
 
     </div>
   </div>
 </section>
-
-
-<!-- ═══════════════════════════════════════════════════════
-     MARQUEE
-════════════════════════════════════════════════════════════ -->
-<div class="marquee-bar">
-  <div class="marquee-track">
-    <div class="marquee-run">
-      <span><i class="fa-solid fa-umbrella-beach"></i> Cox's Bazar</span>
-      <span><i class="fa-solid fa-mountain"></i> Sajek Valley</span>
-      <span><i class="fa-solid fa-snowflake"></i> Kashmir</span>
-      <span><i class="fa-solid fa-city"></i> Dubai</span>
-      <span><i class="fa-solid fa-water"></i> Thailand</span>
-      <span><i class="fa-solid fa-kaaba"></i> Umrah</span>
-      <span><i class="fa-solid fa-passport"></i> Express Visa</span>
-      <span><i class="fa-solid fa-plane"></i> Air Tickets</span>
-      <span><i class="fa-solid fa-hotel"></i> 5-Star Hotels</span>
-    </div>
-    <div class="marquee-run" aria-hidden="true">
-      <span><i class="fa-solid fa-umbrella-beach"></i> Cox's Bazar</span>
-      <span><i class="fa-solid fa-mountain"></i> Sajek Valley</span>
-      <span><i class="fa-solid fa-snowflake"></i> Kashmir</span>
-      <span><i class="fa-solid fa-city"></i> Dubai</span>
-      <span><i class="fa-solid fa-water"></i> Thailand</span>
-      <span><i class="fa-solid fa-kaaba"></i> Umrah</span>
-      <span><i class="fa-solid fa-passport"></i> Express Visa</span>
-      <span><i class="fa-solid fa-plane"></i> Air Tickets</span>
-      <span><i class="fa-solid fa-hotel"></i> 5-Star Hotels</span>
-    </div>
-  </div>
-</div>
 
 
 <!-- ═══════════════════════════════════════════════════════
@@ -608,6 +684,36 @@
   </div>
 </section>
 
+
+<!-- ═══════════════════════════════════════════════════════
+     MARQUEE
+════════════════════════════════════════════════════════════ -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <div class="marquee-run">
+      <span><i class="fa-solid fa-umbrella-beach"></i> Cox's Bazar</span>
+      <span><i class="fa-solid fa-mountain"></i> Sajek Valley</span>
+      <span><i class="fa-solid fa-snowflake"></i> Kashmir</span>
+      <span><i class="fa-solid fa-city"></i> Dubai</span>
+      <span><i class="fa-solid fa-water"></i> Thailand</span>
+      <span><i class="fa-solid fa-kaaba"></i> Umrah</span>
+      <span><i class="fa-solid fa-passport"></i> Express Visa</span>
+      <span><i class="fa-solid fa-plane"></i> Air Tickets</span>
+      <span><i class="fa-solid fa-hotel"></i> 5-Star Hotels</span>
+    </div>
+    <div class="marquee-run" aria-hidden="true">
+      <span><i class="fa-solid fa-umbrella-beach"></i> Cox's Bazar</span>
+      <span><i class="fa-solid fa-mountain"></i> Sajek Valley</span>
+      <span><i class="fa-solid fa-snowflake"></i> Kashmir</span>
+      <span><i class="fa-solid fa-city"></i> Dubai</span>
+      <span><i class="fa-solid fa-water"></i> Thailand</span>
+      <span><i class="fa-solid fa-kaaba"></i> Umrah</span>
+      <span><i class="fa-solid fa-passport"></i> Express Visa</span>
+      <span><i class="fa-solid fa-plane"></i> Air Tickets</span>
+      <span><i class="fa-solid fa-hotel"></i> 5-Star Hotels</span>
+    </div>
+  </div>
+</div>
 
 
 <!-- ═══════════════════════════════════════════════════════
