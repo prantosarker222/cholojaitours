@@ -41,7 +41,7 @@ class LeadRequestHandler(http.server.SimpleHTTPRequestHandler):
                 contact = data.get("phone", data.get("contact", "N/A"))
                 scope = data.get("destination", data.get("scope", "General Inquiry"))
                 budget = data.get("budget", "Proposal Request")
-                source = data.get("source", "Apex Studio Web App")
+                source = data.get("source", "Cholojai Tours Web App")
                 status = "New Inquiry"
 
                 # Save to CSV
@@ -49,12 +49,12 @@ class LeadRequestHandler(http.server.SimpleHTTPRequestHandler):
                     writer = csv.writer(f)
                     writer.writerow([timestamp, inquiry_id, name, contact, scope, budget, source, status])
 
-                print(f"✅ New Apex Studio Project Inquiry Saved: {name} ({contact}) - {scope}")
+                print(f"✅ New Cholojai Tours Traveler Inquiry Saved: {name} ({contact}) - {scope}")
 
                 # Respond back to frontend
                 response = {
                     "success": True,
-                    "message": "Project proposal successfully saved to CSV database!",
+                    "message": "Tour inquiry successfully saved to CSV database!",
                     "lead_id": inquiry_id,
                     "timestamp": timestamp
                 }
@@ -65,7 +65,7 @@ class LeadRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps(response).encode('utf-8'))
 
             except Exception as e:
-                print(f"❌ Error processing project inquiry: {e}")
+                print(f"❌ Error processing tour inquiry: {e}")
                 self.send_response(400)
                 self.send_header('Content-Type', 'application/json')
                 self.end_headers()
@@ -74,8 +74,8 @@ class LeadRequestHandler(http.server.SimpleHTTPRequestHandler):
             super().do_POST()
 
 if __name__ == "__main__":
-    print(f"🚀 Apex Studio Project Inquiry Server running on http://localhost:{PORT}")
-    print(f"📁 Project inquiries saved to: {CSV_FILE}")
+    print(f"🚀 Cholojai Tours Lead Server running on http://localhost:{PORT}")
+    print(f"📁 Traveler inquiries saved to: {CSV_FILE}")
 
     with socketserver.TCPServer(("", PORT), LeadRequestHandler) as httpd:
         try:

@@ -179,46 +179,6 @@
     drawer?.classList.toggle('open', open);
   });
 
-  // ── Corporate Form ─────────────────────────────────────────
-  $('#corpForm')?.addEventListener('submit', e => {
-    e.preventDefault();
-    const company = $('#corpCompany')?.value.trim();
-    const name    = $('#corpName')?.value.trim();
-    const phone   = $('#corpPhone')?.value.trim();
-    const dest    = $('#corpDest')?.value;
-    const pax     = $('#corpPax')?.value;
-    const notes   = $('#corpNotes')?.value.trim() || 'Standard corporate package request.';
-
-    if (!company || !name || !phone) {
-      toast('⚠️ Please fill out Company Name, Contact Person, and Phone.');
-      return;
-    }
-
-    const leadObj = {
-      id: Date.now(),
-      date: new Date().toLocaleDateString('en-GB', {day:'2-digit', month:'short', year:'numeric'}),
-      name: `${company} (${name})`,
-      phone,
-      scope: `Corporate Proposal: ${dest} (${pax})`,
-      notes: `Requirements: ${notes}`,
-      status: 'Corporate Inquiry'
-    };
-    // Save to local storage & backend
-    leads.unshift(leadObj);
-    localStorage.setItem(LEADS_KEY, JSON.stringify(leads));
-    updateBadge();
-
-    fetch(API_URL, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({name: `${company} - ${name}`, phone, destination: `Corporate: ${dest} (${pax})`, budget: 'Corporate Quote', source: 'Cholojai Web v3'})
-    }).catch(() => {});
-
-    toast('✅ Proposal request saved! Opening WhatsApp…');
-
-    const msg = `Hi Cholojai Tours!\n\n🏢 *Corporate Proposal Request*\n• *Company:* ${company}\n• *Contact Person:* ${name}\n• *Phone/WhatsApp:* ${phone}\n• *Destination:* ${dest}\n• *Group Size:* ${pax}\n• *Requirements:* ${notes}\n\nPlease send us a detailed corporate tour proposal & group pricing!`;
-    wa(msg);
-  });
   $$('.drawer-link').forEach(a => a.addEventListener('click', () => {
     hamburger?.classList.remove('open');
     drawer?.classList.remove('open');
@@ -255,6 +215,24 @@
   const heroEl = $('#hero');
   heroEl?.addEventListener('mouseenter', stopSlideTimer);
   heroEl?.addEventListener('mouseleave', startSlideTimer);
+
+  // Mobile Touch Swipe support for Hero Slider
+  let touchStartX = 0;
+  let touchEndX = 0;
+  heroEl?.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+    stopSlideTimer();
+  }, {passive: true});
+  heroEl?.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    if (touchStartX - touchEndX > 45) {
+      showSlide(currentSlide + 1);
+    } else if (touchEndX - touchStartX > 45) {
+      showSlide(currentSlide - 1);
+    }
+    startSlideTimer();
+  }, {passive: true});
+
   showSlide(0);
   startSlideTimer();
 
@@ -266,11 +244,11 @@
   const applyTheme = (isLight) => {
     if (isLight) {
       document.body.classList.add('light');
-      if (themeBtn) themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+      if (themeBtn) themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
       themeMeta?.setAttribute('content', '#f8fafc');
     } else {
       document.body.classList.remove('light');
-      if (themeBtn) themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+      if (themeBtn) themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
       themeMeta?.setAttribute('content', '#060c14');
     }
   };
@@ -293,41 +271,6 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
   }, {threshold: 0.12});
   $$('.fade-up').forEach(el => ro.observe(el));
-
-  // ── Animated Counter Stats (hero) ─────────────────────────
-  function animateCounter(el, target, suffix='') {
-    let start = 0;
-    const duration = 2200;
-    const step = timestamp => {
-      if (!start) start = timestamp;
-      const p = Math.min((timestamp - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(ease * target).toLocaleString('en-IN');
-      if (p < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }
-
-  const statsObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        $$('.hstat-num').forEach(el => {
-          let target = parseInt(el.dataset.target);
-          // 994 actually means 99.4 visually shown separately
-          if (el.dataset.target === '994') {
-            animateCounter(el, 994);
-            // Swap to show "99.4" after counter runs
-            setTimeout(() => { el.textContent = '99.4'; }, 2300);
-          } else {
-            animateCounter(el, target);
-          }
-        });
-        statsObserver.disconnect();
-      }
-    });
-  }, {threshold: 0.5});
-  const heroStats = $('.hero-stats');
-  if (heroStats) statsObserver.observe(heroStats);
 
   // ── Toast ──────────────────────────────────────────────────
   let toastTimer;
@@ -376,6 +319,7 @@
   // BD Spots Inquire button
   $$('.book-spot').forEach(b => b.addEventListener('click', () => {
     const sc = $('#cScope'); if (sc) sc.value = b.dataset.spot;
+    const cd = $('#cDetails'); if (cd) cd.value = `Hi Cholojai Tours! I'd like to book a trip to ${b.dataset.spot}. Please send package details, hotel options, and group pricing.`;
     document.getElementById('contact')?.scrollIntoView({behavior:'smooth'});
     toast('✅ Spot added to inquiry form!');
   }));
@@ -409,7 +353,7 @@
       <h4 style="font-size:14px;font-weight:700;color:var(--brand-lime);margin-bottom:12px;"><i class="fa-solid fa-map-location-dot"></i> Day-by-Day Itinerary</h4>
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:28px;">
         ${p.itinerary.map(it=>`
-          <div style="display:flex;gap:14px;padding:12px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--r);">
+          <div style="display:flex;gap:14px;padding:12px;background:var(--bg4);border:1px solid var(--border);border-radius:var(--r);">
             <span style="flex-shrink:0;padding:4px 12px;border-radius:999px;background:var(--gold-soft);border:1px solid var(--border-gold);font-size:11px;font-weight:700;color:var(--gold);white-space:nowrap;">${esc(it.day)}</span>
             <span style="font-size:13px;color:var(--txt2);line-height:1.6;">${esc(it.desc)}</span>
           </div>
@@ -435,6 +379,7 @@
   // Book Now buttons on cards
   $$('.book-btn').forEach(b => b.addEventListener('click', () => {
     const sc = $('#cScope'); if (sc) sc.value = b.dataset.title + ' (' + b.dataset.price + ')';
+    const cd = $('#cDetails'); if (cd) cd.value = `Hi Cholojai Tours! I would like to book "${b.dataset.title}". Please share current rates and available tour dates.`;
     document.getElementById('contact')?.scrollIntoView({behavior:'smooth'});
     toast('✅ Destination pre-filled in the form!');
   }));

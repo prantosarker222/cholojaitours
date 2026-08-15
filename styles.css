@@ -76,7 +76,8 @@ body.light{
 
 /* ── Utilities ───────────────────────────────────── */
 .container{max-width:1220px;margin:0 auto;padding:0 28px}
-.section{padding:96px 0}
+.section{padding:96px 0;scroll-margin-top:85px}
+section,header,footer{scroll-margin-top:85px}
 .bg-layer{background:var(--bg2)}
 .center{text-align:center}
 .full{width:100%;justify-content:center}
@@ -764,8 +765,9 @@ body.light .bd-spot-tags span{background:#f1f5f9;color:#475569;border-color:rgba
   .review-grid{grid-template-columns:1fr}
   .form-card{padding:24px 18px}
   .wa-fab-label{display:none}
-  .wa-fab{padding:14px;bottom:20px;right:16px}
-  .wa-fab i{font-size:24px}
+  .wa-fab{padding:12px 14px;bottom:58px;right:16px}
+  .wa-fab i{font-size:22px}
+  .toast{bottom:115px;right:16px;left:16px;max-width:calc(100% - 32px);text-align:center}
   .footer-inner{flex-direction:column;align-items:flex-start;gap:16px}
   .modal-box{padding:20px 16px;max-height:94vh}
   .filter-row{gap:6px}
@@ -782,5 +784,5 @@ body.light .bd-spot-tags span{background:#f1f5f9;color:#475569;border-color:rgba
   .why-grid{grid-template-columns:1fr}
   .modal-actions{flex-direction:column;gap:10px;align-items:stretch}
   .modal-actions button{width:100%;justify-content:center}
-  .bd-spot-card{flex-direction:column;padding:18px}
+  .bd-spot-body{padding:18px 16px}
 }
