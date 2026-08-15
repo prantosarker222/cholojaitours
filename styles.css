@@ -93,15 +93,15 @@ body.light{
 
 /* ── Floating WhatsApp ───────────────────────────── */
 .wa-fab{
-  position:fixed;bottom:28px;right:28px;z-index:900;
+  position:fixed;bottom:54px;right:24px;z-index:990;
   display:flex;align-items:center;gap:10px;
-  padding:13px 20px;border-radius:var(--rf);
-  background:#25d366;color:#fff;font-weight:700;font-size:15px;
+  padding:12px 18px;border-radius:var(--rf);
+  background:#25d366;color:#fff;font-weight:700;font-size:14.5px;
   box-shadow:0 8px 30px rgba(37,211,102,.45);
   transition:var(--spring);
 }
 .wa-fab:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 12px 40px rgba(37,211,102,.55)}
-.wa-fab i{font-size:22px}
+.wa-fab i{font-size:20px}
 .wa-fab-label{white-space:nowrap}
 
 /* ── Navbar ──────────────────────────────────────── */
@@ -308,24 +308,33 @@ body.light .hero-overlay{
 }
 @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
 
-/* ── Marquee ─────────────────────────────────────── */
+/* ── Bottom Pinned Marquee Ticker ────────────────── */
 .marquee-bar{
-  padding:18px 0;
-  background:linear-gradient(90deg,var(--bg2),rgba(245,158,11,.04),var(--bg2));
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;
+  position:fixed;bottom:0;left:0;right:0;width:100%;z-index:980;
+  padding:10px 0;
+  background:rgba(6,12,20,.90);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-top:1px solid var(--border-gold);
+  border-bottom:none;overflow:hidden;
+  box-shadow:0 -4px 20px rgba(0,0,0,.35);
 }
-.marquee-track{display:flex;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent)}
+body.light .marquee-bar{
+  background:rgba(255,255,255,.94);
+  border-top:1px solid rgba(142,198,63,.40);
+  box-shadow:0 -4px 20px rgba(0,0,0,.08);
+}
+.marquee-track{display:flex;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent);mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent)}
 .marquee-run{
   display:flex;gap:0;flex-shrink:0;min-width:100%;
-  animation:mrun 26s linear infinite;
+  animation:mrun 24s linear infinite;
 }
-.marquee-run:nth-child(2){animation-delay:-13s}
+.marquee-run:nth-child(2){animation-delay:-12s}
 .marquee-run span{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:0 24px;font-size:13px;font-weight:600;color:var(--txt2);
+  display:inline-flex;align-items:center;gap:8px;
+  padding:0 22px;font-size:12.5px;font-weight:700;color:var(--txt);
   border-right:1px solid var(--border);white-space:nowrap;
 }
-.marquee-run span i{color:var(--gold);font-size:13px}
+body.light .marquee-run span{color:var(--txt)}
+.marquee-run span i{color:var(--gold);font-size:12px}
 @keyframes mrun{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
 /* ── Section Header ──────────────────────────────── */
@@ -554,7 +563,7 @@ body.light .fgroup select option{background:#ffffff;color:#0f172a}
 .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 
 /* ── Footer ──────────────────────────────────────── */
-.footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 0}
+.footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 0 64px}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .footer-brand p{font-size:13px;color:var(--txt2);margin-top:6px}
 .footer-right{display:flex;gap:10px}
